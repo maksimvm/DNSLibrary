@@ -8,3 +8,7 @@
 
 // MARK: - MainScreen
 "mainScreenTitleText" = "Library";
+"mainScreenBookNameLabelText" = "Book name";
+"mainScreenAuthorLabelText" = "Author";
+"mainScreenPublicationDateLabelText" = "Publication year";
+"mainScreenNoBooksLabelText" = "You don't have any books yet";

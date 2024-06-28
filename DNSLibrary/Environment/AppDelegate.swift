@@ -12,11 +12,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	// MARK: - Data
 	var window: UIWindow?
+	var coordinator: MainCoordinator?
 	
 	func application(
 		_ application: UIApplication,
 		didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
 	) -> Bool {
+		ThemeManager.applyTheme(theme: ThemeManager.currentTheme())
 		configureAppWindow()
 		
 		return true
@@ -24,7 +26,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	/// Function that creates app window and main coordinator.
 	private func configureAppWindow() {
-		let window: UIWindow = UIWindow()
-		self.window = window
+		let navigationController: UINavigationController = UINavigationController()
+		coordinator = MainCoordinator(navigationController: navigationController)
+		coordinator?.start()
+		window = UIWindow()
+		window?.rootViewController = navigationController
+		window?.makeKeyAndVisible()
 	}
 }

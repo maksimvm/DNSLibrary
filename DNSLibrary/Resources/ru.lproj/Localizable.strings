@@ -8,3 +8,7 @@
 
 // MARK: - MainScreen
 "mainScreenTitleText" = "Библиотека";
+"mainScreenBookNameLabelText" = "Название";
+"mainScreenAuthorLabelText" = "Автор";
+"mainScreenPublicationDateLabelText" = "Год публикации";
+"mainScreenNoBooksLabelText" = "У вас пока нет ни одной книги";
