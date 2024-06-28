@@ -8,22 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		813DE2792C2E9B4A0030EDE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2782C2E9B4A0030EDE2 /* AppDelegate.swift */; };
-		813DE27B2C2E9B4A0030EDE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE27A2C2E9B4A0030EDE2 /* SceneDelegate.swift */; };
-		813DE27D2C2E9B4A0030EDE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE27C2C2E9B4A0030EDE2 /* ViewController.swift */; };
-		813DE2802C2E9B4A0030EDE2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 813DE27F2C2E9B4A0030EDE2 /* Base */; };
 		813DE2822C2E9B4C0030EDE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 813DE2812C2E9B4C0030EDE2 /* Assets.xcassets */; };
-		813DE2852C2E9B4C0030EDE2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 813DE2842C2E9B4C0030EDE2 /* Base */; };
+		813DE2902C2EA1240030EDE2 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 813DE28F2C2EA1240030EDE2 /* .gitignore */; };
+		813DE2922C2EA1290030EDE2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 813DE2912C2EA1290030EDE2 /* .swiftlint.yml */; };
+		813DE2972C2EA6470030EDE2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 813DE2962C2EA6470030EDE2 /* LaunchScreen.xib */; };
+		813DE29F2C2EAC470030EDE2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 813DE29D2C2EAC470030EDE2 /* InfoPlist.strings */; };
+		813DE2A22C2EAC610030EDE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 813DE2A02C2EAC610030EDE2 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		813DE2752C2E9B4A0030EDE2 /* DNSLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DNSLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		813DE2782C2E9B4A0030EDE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		813DE27A2C2E9B4A0030EDE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		813DE27C2C2E9B4A0030EDE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		813DE27F2C2E9B4A0030EDE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		813DE2812C2E9B4C0030EDE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		813DE2842C2E9B4C0030EDE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		813DE2862C2E9B4C0030EDE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		813DE28F2C2EA1240030EDE2 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		813DE2912C2EA1290030EDE2 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+		813DE2962C2EA6470030EDE2 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		813DE29E2C2EAC470030EDE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		813DE2A12C2EAC610030EDE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		813DE2A32C2EAC6E0030EDE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		813DE2A42C2EAC6E0030EDE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +59,47 @@
 		813DE2772C2E9B4A0030EDE2 /* DNSLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				813DE2782C2E9B4A0030EDE2 /* AppDelegate.swift */,
-				813DE27A2C2E9B4A0030EDE2 /* SceneDelegate.swift */,
-				813DE27C2C2E9B4A0030EDE2 /* ViewController.swift */,
-				813DE27E2C2E9B4A0030EDE2 /* Main.storyboard */,
-				813DE2812C2E9B4C0030EDE2 /* Assets.xcassets */,
-				813DE2832C2E9B4C0030EDE2 /* LaunchScreen.storyboard */,
-				813DE2862C2E9B4C0030EDE2 /* Info.plist */,
+				813DE28C2C2EA0680030EDE2 /* Environment */,
+				813DE28D2C2EA0760030EDE2 /* Modules */,
+				813DE28E2C2EA0800030EDE2 /* Resources */,
 			);
 			path = DNSLibrary;
+			sourceTree = "<group>";
+		};
+		813DE28C2C2EA0680030EDE2 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				813DE28F2C2EA1240030EDE2 /* .gitignore */,
+				813DE2912C2EA1290030EDE2 /* .swiftlint.yml */,
+				813DE2782C2E9B4A0030EDE2 /* AppDelegate.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		813DE28D2C2EA0760030EDE2 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				813DE2952C2EA61D0030EDE2 /* LaunchScreen */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		813DE28E2C2EA0800030EDE2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				813DE2812C2E9B4C0030EDE2 /* Assets.xcassets */,
+				813DE29D2C2EAC470030EDE2 /* InfoPlist.strings */,
+				813DE2A02C2EAC610030EDE2 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		813DE2952C2EA61D0030EDE2 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				813DE2962C2EA6470030EDE2 /* LaunchScreen.xib */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -75,6 +110,7 @@
 			buildConfigurationList = 813DE2892C2E9B4C0030EDE2 /* Build configuration list for PBXNativeTarget "DNSLibrary" */;
 			buildPhases = (
 				813DE2712C2E9B4A0030EDE2 /* Sources */,
+				813DE2932C2EA1870030EDE2 /* SwiftLint */,
 				813DE2722C2E9B4A0030EDE2 /* Frameworks */,
 				813DE2732C2E9B4A0030EDE2 /* Resources */,
 			);
@@ -104,11 +140,12 @@
 			};
 			buildConfigurationList = 813DE2702C2E9B4A0030EDE2 /* Build configuration list for PBXProject "DNSLibrary" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 813DE26C2C2E9B4A0030EDE2;
 			productRefGroup = 813DE2762C2E9B4A0030EDE2 /* Products */;
@@ -125,42 +162,67 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813DE2972C2EA6470030EDE2 /* LaunchScreen.xib in Resources */,
+				813DE2A22C2EAC610030EDE2 /* Localizable.strings in Resources */,
+				813DE2922C2EA1290030EDE2 /* .swiftlint.yml in Resources */,
+				813DE2902C2EA1240030EDE2 /* .gitignore in Resources */,
 				813DE2822C2E9B4C0030EDE2 /* Assets.xcassets in Resources */,
-				813DE2852C2E9B4C0030EDE2 /* Base in Resources */,
-				813DE2802C2E9B4A0030EDE2 /* Base in Resources */,
+				813DE29F2C2EAC470030EDE2 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		813DE2932C2EA1870030EDE2 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		813DE2712C2E9B4A0030EDE2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				813DE27D2C2E9B4A0030EDE2 /* ViewController.swift in Sources */,
 				813DE2792C2E9B4A0030EDE2 /* AppDelegate.swift in Sources */,
-				813DE27B2C2E9B4A0030EDE2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		813DE27E2C2E9B4A0030EDE2 /* Main.storyboard */ = {
+		813DE29D2C2EAC470030EDE2 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				813DE27F2C2E9B4A0030EDE2 /* Base */,
+				813DE29E2C2EAC470030EDE2 /* en */,
+				813DE2A32C2EAC6E0030EDE2 /* ru */,
 			);
-			name = Main.storyboard;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		813DE2832C2E9B4C0030EDE2 /* LaunchScreen.storyboard */ = {
+		813DE2A02C2EAC610030EDE2 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				813DE2842C2E9B4C0030EDE2 /* Base */,
+				813DE2A12C2EAC610030EDE2 /* en */,
+				813DE2A42C2EAC6E0030EDE2 /* ru */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -171,6 +233,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -234,6 +297,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -289,17 +353,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DNSLibrary/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(CFBundleDisplayName)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -314,6 +377,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -323,17 +387,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DNSLibrary/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(CFBundleDisplayName)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -348,6 +411,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

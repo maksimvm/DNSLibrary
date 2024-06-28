@@ -1,0 +1,35 @@
+opt_in_rules:
+  - sorted_imports
+  
+disabled_rules:
+  - trailing_whitespace
+
+included:
+  - DNSLibrary
+excluded:
+  - Assets
+
+reporter: "xcode"
+
+function_parameter_count:
+  warning: 10
+  error: 15
+
+identifier_name:
+  min_length: 3
+  max_length:
+    warning: 90
+    error: 160
+
+type_name:
+  min_length: 3
+  max_length:
+    warning: 90
+    error: 160
+
+analyzer_rules:
+  - unused_import
+  - unused_declaration
+
+unused_declaration:
+  include_public_and_open: true

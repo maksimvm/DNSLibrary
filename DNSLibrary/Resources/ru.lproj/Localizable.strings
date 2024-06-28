@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  DNSLibrary
+
+  Created by Максим Громов on 28.06.2024.
+  
+*/
+
+// MARK: - MainScreen
+"mainScreenTitleText" = "Библиотека";
