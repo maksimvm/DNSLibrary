@@ -53,6 +53,7 @@
 		813DE2C92C2F05DF0030EDE2 /* UICollectionViewCell + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell + Extension.swift"; sourceTree = "<group>"; };
 		813DE2CB2C2F061E0030EDE2 /* UICollectionView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extenstion.swift"; sourceTree = "<group>"; };
 		813DE2CF2C2F0BD90030EDE2 /* MainScreenPlaceholderUICollectionViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenPlaceholderUICollectionViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		813DE2D12C2FC4140030EDE2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +104,7 @@
 				813DE2912C2EA1290030EDE2 /* .swiftlint.yml */,
 				813DE2782C2E9B4A0030EDE2 /* AppDelegate.swift */,
 				813DE2A82C2EBD880030EDE2 /* MainCoordinator.swift */,
+				813DE2D12C2FC4140030EDE2 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Environment;
 			sourceTree = "<group>";

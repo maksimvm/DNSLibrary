@@ -15,7 +15,7 @@ final class MainScreenPlaceholderUICollectionViewCollectionViewCell: UICollectio
 		placeholderImage.translatesAutoresizingMaskIntoConstraints = false
 		placeholderImage.backgroundColor = ThemeManager.currentTheme().generalColor
 		placeholderImage.contentMode = .scaleAspectFit
-		placeholderImage.image = UIImage(named: "MainScreen/PlaceholderImage")
+		placeholderImage.image = UIImage(systemName: "building.columns")
 		return placeholderImage
 	}()
 	private lazy var noBooksLabel: UILabel = {
@@ -35,10 +35,11 @@ final class MainScreenPlaceholderUICollectionViewCollectionViewCell: UICollectio
 		contentView.addSubview(placeholderImage)
 		contentView.addSubview(noBooksLabel)
 		NSLayoutConstraint.activate([
-			placeholderImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-			placeholderImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-			placeholderImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-			noBooksLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 4),
+			placeholderImage.widthAnchor.constraint(equalToConstant: 150),
+			placeholderImage.heightAnchor.constraint(equalToConstant: 150),
+			placeholderImage.centerXAnchor.constraint(equalTo: noBooksLabel.centerXAnchor, constant: 0),
+			noBooksLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0),
+			noBooksLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0),
 			noBooksLabel.topAnchor.constraint(equalTo: placeholderImage.bottomAnchor, constant: 4),
 			noBooksLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
 			noBooksLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -16),
