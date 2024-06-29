@@ -5,11 +5,17 @@
 //  Created by Максим Громов on 28.06.2024.
 //
 
+import Combine
 import UIKit
 
 final class MainScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
     
+	enum Action {
+		case editBook
+	}
+	
 	// MARK: - Data
+	var action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private lazy var bookNameLabel: UILabel = {
 		let bookName: UILabel = UILabel()
 		bookName.translatesAutoresizingMaskIntoConstraints = false
@@ -56,10 +62,18 @@ final class MainScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 			publicationYearLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
 			publicationYearLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
 		])
+		let cellTapGestureRecognizerp: UITapGestureRecognizer = UITapGestureRecognizer(target: self, 
+																					   action: #selector(editBook))
+		contentView.addGestureRecognizer(cellTapGestureRecognizerp)
 	}
 	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
+	}
+	
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		action = PassthroughSubject<Action, Never>()
 	}
 	
 	func configure(_ book: Book) {
@@ -67,4 +81,8 @@ final class MainScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 	}
 	
 	// MARK: - Actions
+	@objc 
+	private func editBook() {
+		action.send(.editBook)
+	}
 }

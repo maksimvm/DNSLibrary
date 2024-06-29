@@ -14,8 +14,8 @@ final class MainScreenViewModel {
 	
 	// MARK: - Data
 	@Published
-	public var libraryModel: [Book] = [Book]()
-	public var action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
+	var libraryModel: [Book] = [Book]()
+	var action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private var cancellables: Set<AnyCancellable> = []
 	
 	init() {

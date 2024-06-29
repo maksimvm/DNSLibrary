@@ -5,9 +5,14 @@
 //  Created by Максим Громов on 28.06.2024.
 //
 
+import Combine
 import UIKit
 
 final class MainScreenUICollectionView: UICollectionView {
+	
+	enum Action {
+		case editBook
+	}
 
 	private typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
 	private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
@@ -23,6 +28,8 @@ final class MainScreenUICollectionView: UICollectionView {
 	}
 	
 	// MARK: - Data
+	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
+	private var cancellables: Set<AnyCancellable> = []
 	private lazy var diffableDataSource: DataSource = configureDataSource()
 	private lazy var compositionalLayout: UICollectionViewLayout  = configureLayout()
 	
@@ -72,6 +79,16 @@ final class MainScreenUICollectionView: UICollectionView {
 		case .book(let book):
 			if let cell: MainScreenUICollectionViewCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenUICollectionViewCollectionViewCell.reuseIdentifier,
 																										   for: indexPath) as? MainScreenUICollectionViewCollectionViewCell {
+				cell.action
+					.receive(on: DispatchQueue.main)
+					.sink { [weak self] action in
+						switch action {
+							
+						case .editBook:
+							self?.action.send(.editBook)
+						}
+					}
+					.store(in: &cancellables)
 				return cell
 			}
 		case .placeholder:
@@ -122,7 +139,7 @@ final class MainScreenUICollectionView: UICollectionView {
 		return section
 	}
 	
-	public func configure(_ model: [Book]) {
+	func configure(_ model: [Book]) {
 		isScrollEnabled = !model.isEmpty
 		var snapshot: Snapshot = Snapshot()
 		if model.isEmpty {

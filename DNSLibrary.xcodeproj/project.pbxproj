@@ -27,6 +27,10 @@
 		813DE2CA2C2F05DF0030EDE2 /* UICollectionViewCell + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2C92C2F05DF0030EDE2 /* UICollectionViewCell + Extension.swift */; };
 		813DE2CC2C2F061E0030EDE2 /* UICollectionView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2CB2C2F061E0030EDE2 /* UICollectionView + Extenstion.swift */; };
 		813DE2D02C2F0BD90030EDE2 /* MainScreenPlaceholderUICollectionViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2CF2C2F0BD90030EDE2 /* MainScreenPlaceholderUICollectionViewCollectionViewCell.swift */; };
+		813DE2D32C306CB90030EDE2 /* DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2D22C306CB90030EDE2 /* DebugPrint.swift */; };
+		813DE2DB2C306E550030EDE2 /* BookScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2D62C306E550030EDE2 /* BookScreenViewController.swift */; };
+		813DE2DC2C306E550030EDE2 /* BookScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2D72C306E550030EDE2 /* BookScreenAssembly.swift */; };
+		813DE2DD2C306E550030EDE2 /* BookScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2D82C306E550030EDE2 /* BookScreenViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +58,10 @@
 		813DE2CB2C2F061E0030EDE2 /* UICollectionView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extenstion.swift"; sourceTree = "<group>"; };
 		813DE2CF2C2F0BD90030EDE2 /* MainScreenPlaceholderUICollectionViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenPlaceholderUICollectionViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		813DE2D12C2FC4140030EDE2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		813DE2D22C306CB90030EDE2 /* DebugPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugPrint.swift; sourceTree = "<group>"; };
+		813DE2D62C306E550030EDE2 /* BookScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookScreenViewController.swift; sourceTree = "<group>"; };
+		813DE2D72C306E550030EDE2 /* BookScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookScreenAssembly.swift; sourceTree = "<group>"; };
+		813DE2D82C306E550030EDE2 /* BookScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookScreenViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +94,8 @@
 		813DE2772C2E9B4A0030EDE2 /* DNSLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				813DE28C2C2EA0680030EDE2 /* Environment */,
 				813DE2CE2C2F07830030EDE2 /* Protocols */,
+				813DE28C2C2EA0680030EDE2 /* Environment */,
 				813DE2C82C2F05CE0030EDE2 /* Extensions */,
 				813DE2CD2C2F07730030EDE2 /* Managers */,
 				813DE2C52C2EFE7E0030EDE2 /* Models */,
@@ -105,6 +113,7 @@
 				813DE2782C2E9B4A0030EDE2 /* AppDelegate.swift */,
 				813DE2A82C2EBD880030EDE2 /* MainCoordinator.swift */,
 				813DE2D12C2FC4140030EDE2 /* PrivacyInfo.xcprivacy */,
+				813DE2D22C306CB90030EDE2 /* DebugPrint.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -114,6 +123,7 @@
 			children = (
 				813DE2952C2EA61D0030EDE2 /* LaunchScreen */,
 				813DE2AA2C2EBE060030EDE2 /* MainScreen */,
+				813DE2D42C306E3D0030EDE2 /* BookScreen */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -189,6 +199,16 @@
 				813DE2A62C2EBD460030EDE2 /* Coordinator.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		813DE2D42C306E3D0030EDE2 /* BookScreen */ = {
+			isa = PBXGroup;
+			children = (
+				813DE2D72C306E550030EDE2 /* BookScreenAssembly.swift */,
+				813DE2D82C306E550030EDE2 /* BookScreenViewModel.swift */,
+				813DE2D62C306E550030EDE2 /* BookScreenViewController.swift */,
+			);
+			path = BookScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,11 +318,15 @@
 				813DE2B32C2EBE1C0030EDE2 /* MainScreenViewModel.swift in Sources */,
 				813DE2A92C2EBD880030EDE2 /* MainCoordinator.swift in Sources */,
 				813DE2C72C2EFE920030EDE2 /* Book.swift in Sources */,
+				813DE2DB2C306E550030EDE2 /* BookScreenViewController.swift in Sources */,
+				813DE2DC2C306E550030EDE2 /* BookScreenAssembly.swift in Sources */,
+				813DE2DD2C306E550030EDE2 /* BookScreenViewModel.swift in Sources */,
 				813DE2792C2E9B4A0030EDE2 /* AppDelegate.swift in Sources */,
 				813DE2CA2C2F05DF0030EDE2 /* UICollectionViewCell + Extension.swift in Sources */,
 				813DE2BD2C2EE7F60030EDE2 /* UserDefaultsManager.swift in Sources */,
 				813DE2D02C2F0BD90030EDE2 /* MainScreenPlaceholderUICollectionViewCollectionViewCell.swift in Sources */,
 				813DE2B72C2EC9C40030EDE2 /* ThemeManager.swift in Sources */,
+				813DE2D32C306CB90030EDE2 /* DebugPrint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

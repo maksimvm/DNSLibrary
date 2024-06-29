@@ -11,7 +11,6 @@ final class MainCoordinator: Coordinator {
 	
 	// MARK: - Data
 	var navigationController: UINavigationController
-	var childCoordinators = [Coordinator]()
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -23,5 +22,11 @@ final class MainCoordinator: Coordinator {
 		let mainScreenAssembly = MainScreenAssembly(coordinator: self)
 		navigationController.pushViewController(mainScreenAssembly.view,
 												animated: false)
+	}
+	
+	func addBook() {
+		let bookScreenAssembly: BookScreenAssembly = BookScreenAssembly { _ in }
+		navigationController.pushViewController(bookScreenAssembly.view,
+												animated: true)
 	}
 }

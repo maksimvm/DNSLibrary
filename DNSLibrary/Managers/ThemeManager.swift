@@ -48,4 +48,8 @@ enum Theme: String {
 			return .white
 		}
 	}
+	
+	var generalSymbolColor: UIColor {
+		return .blue
+	}
 }

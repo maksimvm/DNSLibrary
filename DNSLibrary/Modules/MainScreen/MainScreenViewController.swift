@@ -12,7 +12,7 @@ final class MainScreenViewController: UIViewController {
 		
 	// MARK: - Data
 	var viewModel: MainScreenViewModel!
-	var coordinator: MainCoordinator!
+	weak var coordinator: MainCoordinator?
 	private var cancellables: Set<AnyCancellable> = []
 	private let collectionView: MainScreenUICollectionView = MainScreenUICollectionView(frame: .zero)
 	
@@ -29,8 +29,12 @@ final class MainScreenViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		configureView()
-		configureNavigationBar()
 		binding()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		configureNavigationBar()
 	}
 	
 	private func configureView() {
@@ -44,12 +48,6 @@ final class MainScreenViewController: UIViewController {
 		])
 	}
 	
-	private func configureNavigationBar() {
-		navigationItem.title = NSLocalizedString("mainScreenTitleText", comment: "")
-		navigationItem.largeTitleDisplayMode = .automatic
-		navigationController?.navigationBar.prefersLargeTitles = true
-	}
-	
 	private func binding() {
 		viewModel.$libraryModel
 			.receive(on: DispatchQueue.main)
@@ -57,7 +55,46 @@ final class MainScreenViewController: UIViewController {
 				self?.collectionView.configure(model)
 			}
 			.store(in: &cancellables)
+		collectionView.action
+			.receive(on: DispatchQueue.main)
+			.sink { [weak self] action in
+				guard let self else { return }
+				switch action {
+				case .editBook:
+					print("editbook")
+				}
+			}
+			.store(in: &cancellables)
+	}
+	
+	private func configureNavigationBar() {
+		navigationItem.title = NSLocalizedString("mainScreenTitleText", comment: "")
+		navigationItem.backButtonTitle = ""
+		navigationItem.largeTitleDisplayMode = .automatic
+		navigationController?.navigationBar.prefersLargeTitles = true
+		let addBookUIBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus")?.withTintColor(ThemeManager.currentTheme().generalSymbolColor),
+																	  style: .plain,
+																	  target: self,
+																	  action: #selector(addBook))
+		let sortBooksUIBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down")?.withTintColor(ThemeManager.currentTheme().generalSymbolColor),
+																		style: .plain,
+																		target: self,
+																		action: #selector(sortBooks))
+		navigationItem.rightBarButtonItems = [
+			addBookUIBarButtonItem,
+			sortBooksUIBarButtonItem
+		]
 	}
 	
 	// MARK: - Actions
+	@objc 
+	private func addBook() {
+		print("addBook")
+		coordinator?.addBook()
+	}
+	
+	@objc 
+	private func sortBooks() {
+		print("sortBooks")
+	}
 }

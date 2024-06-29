@@ -15,7 +15,7 @@ final class MainScreenPlaceholderUICollectionViewCollectionViewCell: UICollectio
 		placeholderImage.translatesAutoresizingMaskIntoConstraints = false
 		placeholderImage.backgroundColor = ThemeManager.currentTheme().generalColor
 		placeholderImage.contentMode = .scaleAspectFit
-		placeholderImage.image = UIImage(systemName: "building.columns")
+		placeholderImage.image = UIImage(systemName: "building.columns")?.withTintColor(ThemeManager.currentTheme().generalSymbolColor)
 		return placeholderImage
 	}()
 	private lazy var noBooksLabel: UILabel = {
