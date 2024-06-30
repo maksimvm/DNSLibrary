@@ -17,9 +17,9 @@ final class MainScreenViewModel {
 	// MARK: - Data
 	@Published
 	private(set) var libraryModel: [Book] = [Book]()
-	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private(set) var chosenSortingOption: SortingOption = .bookName
 	private(set) var chosenSortingOptionType: SortingType = .ascending
+	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private var cancellables: Set<AnyCancellable> = []
 	
 	init() {

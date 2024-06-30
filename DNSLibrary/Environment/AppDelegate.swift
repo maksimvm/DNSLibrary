@@ -12,7 +12,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	// MARK: - Data
 	var window: UIWindow?
-	var coordinator: MainCoordinator?
+	private(set) var coordinator: MainCoordinator?
 	
 	func application(
 		_ application: UIApplication,

@@ -10,7 +10,7 @@ import UIKit
 final class MainCoordinator: Coordinator {
 	
 	// MARK: - Data
-	var navigationController: UINavigationController
+	private(set) var navigationController: UINavigationController
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
