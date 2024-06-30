@@ -40,14 +40,11 @@ final class MainCoordinator: Coordinator {
 		var publicationDateSortActionTitle: String = NSLocalizedString("sortBooksScreenPublicationYearSortActionText", comment: "")
 		switch sortingOption {
 		case .bookName:
-			bookNameSortActionTitle.append(sortingType == .ascending ? " ↑" : " ↓")
-			bookNameSortActionTitle.append(" ✓")
+			bookNameSortActionTitle.append(sortingType == .ascending ? " ↑ ✓" : " ↓ ✓")
 		case .author:
-			authorSortActionTitle.append(sortingType == .ascending ? " ↑" : " ↓")
-			authorSortActionTitle.append(" ✓")
+			authorSortActionTitle.append(sortingType == .ascending ? " ↑ ✓" : " ↓ ✓")
 		case .publicationDate:
-			publicationDateSortActionTitle.append(sortingType == .ascending ? " ↑" : " ↓")
-			publicationDateSortActionTitle.append(" ✓")
+			publicationDateSortActionTitle.append(sortingType == .ascending ? " ↑ ✓" : " ↓ ✓")
 		}
 		let actionSheetController: UIAlertController = UIAlertController(title: NSLocalizedString("sortBooksScreenTitleText", comment: ""),
 																		 message: nil,
