@@ -11,7 +11,7 @@ import UIKit
 final class MainScreenUICollectionView: UICollectionView {
 	
 	enum Action {
-		case editBook
+		case editBook(book: Book)
 	}
 
 	private typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
@@ -79,13 +79,13 @@ final class MainScreenUICollectionView: UICollectionView {
 		case .book(let book):
 			if let cell: MainScreenUICollectionViewCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenUICollectionViewCollectionViewCell.reuseIdentifier,
 																										   for: indexPath) as? MainScreenUICollectionViewCollectionViewCell {
+				cell.configure(book)
 				cell.action
 					.receive(on: DispatchQueue.main)
 					.sink { [weak self] action in
 						switch action {
-							
 						case .editBook:
-							self?.action.send(.editBook)
+							self?.action.send(.editBook(book: book))
 						}
 					}
 					.store(in: &cancellables)
@@ -97,7 +97,6 @@ final class MainScreenUICollectionView: UICollectionView {
 				return cell
 			}
 		}
-
 		return UICollectionViewCell()
 	}
 	

@@ -13,12 +13,19 @@ final class BookScreenViewModel {
 	enum Action { }
 	
 	// MARK: - Data
-//	@Published
+	@Published
+	private(set) var bookModel: Book?
 	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private var cancellables: Set<AnyCancellable> = []
 	private let actionHandler: ((BookScreenAction) -> Void)
 	
-	init(actionHandler: @escaping ((BookScreenAction) -> Void)) {
+	init(
+		book: Book?,
+		actionHandler: @escaping ((BookScreenAction) -> Void)
+	) {
+		if let book {
+			bookModel = book
+		}
 		self.actionHandler = actionHandler
 		action
 			.receive(on: DispatchQueue.main)

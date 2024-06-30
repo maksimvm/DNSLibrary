@@ -31,7 +31,8 @@ struct ThemeManager {
 }
 
 enum Theme: String {
-	case light, dark
+	case light
+	case dark
 	
 	var generalColor: UIColor {
 		switch self {

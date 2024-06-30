@@ -30,6 +30,12 @@ final class MainCoordinator: Coordinator {
 												animated: true)
 	}
 	
+	func editBook(book: Book) {
+		let bookScreenAssembly: BookScreenAssembly = BookScreenAssembly(book: book) { _ in }
+		navigationController.pushViewController(bookScreenAssembly.view,
+												animated: true)
+	}
+	
 	func sortBooks(
 		sortingOption: SortingOption,
 		sortingType: SortingType,

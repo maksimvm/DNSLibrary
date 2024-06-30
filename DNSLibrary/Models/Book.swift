@@ -9,27 +9,27 @@ import Foundation
 
 struct Book: Sendable, Hashable {
 	let id: String
-	let author: String
 	let bookName: String
-	let publicationYear: Int
+	let author: String
+	let publicationYear: String
 }
 
 extension Book {
 	init(
-		author: String,
 		bookName: String,
-		publicationYear: Int
+		author: String,
+		publicationYear: String
 	) {
 		self.init(id: UUID().uuidString,
-				  author: author,
 				  bookName: bookName,
+				  author: author,
 				  publicationYear: publicationYear)
 	}
 	
 	init() {
 		self.init(id: UUID().uuidString,
-				  author: "",
 				  bookName: "",
-				  publicationYear: -1)
+				  author: "",
+				  publicationYear: "")
 	}
 }

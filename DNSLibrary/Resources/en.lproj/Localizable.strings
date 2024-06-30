@@ -19,3 +19,8 @@
 "sortBooksScreenAuthorSortActionText" = "By author";
 "sortBooksScreenBookNameSortActionText" = "By book name";
 "sortBooksScreenPublicationYearSortActionText" = "By publication year";
+
+// MARK: - BookScreen
+"bookScreenBookNameLabelText" = "Book name";
+"bookScreenAuthorLabelText" = "Book author";
+"bookScreenPublicationDateLabelText" = "Book publication year";

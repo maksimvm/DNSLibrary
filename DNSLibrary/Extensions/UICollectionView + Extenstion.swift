@@ -11,6 +11,7 @@ extension UICollectionView {
 	/// UICollectionView enums for all cases used in project.
 	enum UICollectionViewType {
 		case mainScreenUICollectionView
+		case bookScreenUICollectionView
 	}
 	
 	/// Registers cells for provided UICollectionViewType.
@@ -29,6 +30,9 @@ extension UICollectionView {
 					 forCellWithReuseIdentifier: MainScreenUICollectionViewCollectionViewCell.reuseIdentifier)
 			register(MainScreenPlaceholderUICollectionViewCollectionViewCell.self,
 					 forCellWithReuseIdentifier: MainScreenPlaceholderUICollectionViewCollectionViewCell.reuseIdentifier)
+		case .bookScreenUICollectionView:
+			register(BookScreenUICollectionViewCollectionViewCell.self,
+					 forCellWithReuseIdentifier: BookScreenUICollectionViewCollectionViewCell.reuseIdentifier)
 		}
 	}
 }

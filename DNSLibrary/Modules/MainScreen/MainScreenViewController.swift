@@ -58,10 +58,9 @@ final class MainScreenViewController: UIViewController {
 		collectionView.action
 			.receive(on: DispatchQueue.main)
 			.sink { [weak self] action in
-				guard let self else { return }
 				switch action {
-				case .editBook:
-					print("editbook")
+				case .editBook(let book):
+					self?.coordinator?.editBook(book: book)
 				}
 			}
 			.store(in: &cancellables)

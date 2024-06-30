@@ -21,7 +21,7 @@ final class MainScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 		bookName.translatesAutoresizingMaskIntoConstraints = false
 		bookName.font = UIFont.systemFont(ofSize: 18)
 		bookName.textColor = ThemeManager.currentTheme().generalTitleColor
-		bookName.numberOfLines = 1
+		bookName.numberOfLines = 0
 		bookName.textAlignment = .left
 		bookName.text = NSLocalizedString("mainScreenBookNameLabelText", comment: "")
 		return bookName
@@ -31,7 +31,7 @@ final class MainScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 		bookName.translatesAutoresizingMaskIntoConstraints = false
 		bookName.font = UIFont.systemFont(ofSize: 16)
 		bookName.textColor = ThemeManager.currentTheme().generalTitleColor
-		bookName.numberOfLines = 1
+		bookName.numberOfLines = 0
 		bookName.textAlignment = .left
 		bookName.text = NSLocalizedString("mainScreenAuthorLabelText", comment: "")
 		return bookName
@@ -41,7 +41,7 @@ final class MainScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 		bookName.translatesAutoresizingMaskIntoConstraints = false
 		bookName.font = UIFont.systemFont(ofSize: 14)
 		bookName.textColor = ThemeManager.currentTheme().generalTitleColor
-		bookName.numberOfLines = 1
+		bookName.numberOfLines = 0
 		bookName.textAlignment = .left
 		bookName.text = NSLocalizedString("mainScreenPublicationDateLabelText", comment: "")
 		return bookName
@@ -77,7 +77,9 @@ final class MainScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 	}
 	
 	func configure(_ book: Book) {
-		
+		bookNameLabel.text = book.bookName
+		authorLabel.text = book.author
+		publicationYearLabel.text = book.publicationYear
 	}
 	
 	// MARK: - Actions

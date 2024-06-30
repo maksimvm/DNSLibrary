@@ -19,3 +19,8 @@
 "sortBooksScreenAuthorSortActionText" = "По автору";
 "sortBooksScreenBookNameSortActionText" = "По названию кники";
 "sortBooksScreenPublicationYearSortActionText" = "По году издания";
+
+// MARK: - BookScreen
+"bookScreenBookNameLabelText" = "Название книги";
+"bookScreenAuthorLabelText" = "Автор книги";
+"bookScreenPublicationDateLabelText" = "Год публикации кники";

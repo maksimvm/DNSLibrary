@@ -14,6 +14,7 @@ final class BookScreenAssembly {
     
 	// MARK: - Data
     private var viewController: BookScreenViewController?
+    private var book: Book?
 	private let actionHandler: ((BookScreenAction) -> Void)
     
 	@MainActor
@@ -26,13 +27,22 @@ final class BookScreenAssembly {
         return view
     }
 	
-	init(actionHandler: @escaping (BookScreenAction) -> Void) {
+	convenience init(actionHandler: @escaping (BookScreenAction) -> Void) {
+		self.init(book: nil,
+				  actionHandler: actionHandler)
+	}
+	
+	init(
+		book: Book?,
+		actionHandler: @escaping (BookScreenAction) -> Void
+	) {
+		self.book = book
 		self.actionHandler = actionHandler
 	}
     
 	@MainActor
     private func configureModule(_ view: BookScreenViewController?) {
         guard let view else { return }
-        view.viewModel = BookScreenViewModel(actionHandler: actionHandler)
+		view.viewModel = BookScreenViewModel(book: book, actionHandler: actionHandler)
     }
 }
