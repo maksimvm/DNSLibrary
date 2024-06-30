@@ -53,6 +53,7 @@ final class MainScreenViewController: UIViewController {
 			.receive(on: DispatchQueue.main)
 			.sink { [weak self] model in
 				self?.collectionView.configure(model)
+				self?.navigationItem.rightBarButtonItems?.last?.isEnabled = model.count > 1
 			}
 			.store(in: &cancellables)
 		collectionView.action
