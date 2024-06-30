@@ -10,6 +10,8 @@ import UIKit
 struct ThemeManager {
 	@MainActor 
 	static func applyTheme(theme: Theme) {
+		UserDefaultsManager.shared.updateObject(for: .currentTheme,
+												data: theme.rawValue)
 		let appearance: UINavigationBarAppearance = UINavigationBarAppearance()
 		appearance.configureWithOpaqueBackground()
 		appearance.backgroundColor = ThemeManager.currentTheme().generalColor

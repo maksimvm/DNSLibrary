@@ -89,12 +89,13 @@ final class MainScreenViewController: UIViewController {
 	// MARK: - Actions
 	@objc 
 	private func addBook() {
-		print("addBook")
 		coordinator?.addBook()
 	}
 	
 	@objc 
 	private func sortBooks() {
-		print("sortBooks")
+		coordinator?.sortBooks(sortingOption: viewModel.chosenSortingOption, sortingType: viewModel.chosenSortingOptionType) { [weak self] sortingOption, sortingType  in
+			self?.viewModel.action.send(.sortBooks(sortingOption: sortingOption, sortingType: sortingType))
+		}
 	}
 }

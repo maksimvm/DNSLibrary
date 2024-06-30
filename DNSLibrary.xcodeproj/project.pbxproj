@@ -31,6 +31,7 @@
 		813DE2DB2C306E550030EDE2 /* BookScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2D62C306E550030EDE2 /* BookScreenViewController.swift */; };
 		813DE2DC2C306E550030EDE2 /* BookScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2D72C306E550030EDE2 /* BookScreenAssembly.swift */; };
 		813DE2DD2C306E550030EDE2 /* BookScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2D82C306E550030EDE2 /* BookScreenViewModel.swift */; };
+		813DE2E02C3131DA0030EDE2 /* BookSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2DF2C3131DA0030EDE2 /* BookSorting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		813DE2D62C306E550030EDE2 /* BookScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookScreenViewController.swift; sourceTree = "<group>"; };
 		813DE2D72C306E550030EDE2 /* BookScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookScreenAssembly.swift; sourceTree = "<group>"; };
 		813DE2D82C306E550030EDE2 /* BookScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookScreenViewModel.swift; sourceTree = "<group>"; };
+		813DE2DF2C3131DA0030EDE2 /* BookSorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSorting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				813DE2C62C2EFE920030EDE2 /* Book.swift */,
+				813DE2DF2C3131DA0030EDE2 /* BookSorting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				813DE2B32C2EBE1C0030EDE2 /* MainScreenViewModel.swift in Sources */,
 				813DE2A92C2EBD880030EDE2 /* MainCoordinator.swift in Sources */,
 				813DE2C72C2EFE920030EDE2 /* Book.swift in Sources */,
+				813DE2E02C3131DA0030EDE2 /* BookSorting.swift in Sources */,
 				813DE2DB2C306E550030EDE2 /* BookScreenViewController.swift in Sources */,
 				813DE2DC2C306E550030EDE2 /* BookScreenAssembly.swift in Sources */,
 				813DE2DD2C306E550030EDE2 /* BookScreenViewModel.swift in Sources */,

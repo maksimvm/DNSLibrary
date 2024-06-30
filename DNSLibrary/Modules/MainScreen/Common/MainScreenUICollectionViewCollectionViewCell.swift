@@ -15,7 +15,7 @@ final class MainScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 	}
 	
 	// MARK: - Data
-	var action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
+	private(set) var action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private lazy var bookNameLabel: UILabel = {
 		let bookName: UILabel = UILabel()
 		bookName.translatesAutoresizingMaskIntoConstraints = false

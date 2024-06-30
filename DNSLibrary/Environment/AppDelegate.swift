@@ -18,10 +18,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		_ application: UIApplication,
 		didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
 	) -> Bool {
-		ThemeManager.applyTheme(theme: ThemeManager.currentTheme())
+		configureAppTheme()
 		configureAppWindow()
 		
 		return true
+	}
+	
+	/// Function that sets light or dark theme as a default theme.
+	private func configureAppTheme() {
+		if UITraitCollection.current.userInterfaceStyle == .light {
+			ThemeManager.applyTheme(theme: .light)
+		} else {
+			ThemeManager.applyTheme(theme: .dark)
+		}
 	}
 	
 	/// Function that creates app window and main coordinator.

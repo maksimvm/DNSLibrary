@@ -12,3 +12,10 @@
 "mainScreenAuthorLabelText" = "Author";
 "mainScreenPublicationDateLabelText" = "Publication year";
 "mainScreenNoBooksLabelText" = "You don't have any books yet";
+
+// MARK: - SortBooksScreen
+"sortBooksScreenTitleText" = "Sort books";
+"sortBooksScreenCancelActinText" = "Cancel";
+"sortBooksScreenAuthorSortActionText" = "By author";
+"sortBooksScreenBookNameSortActionText" = "By book name";
+"sortBooksScreenPublicationYearSortActionText" = "By publication year";

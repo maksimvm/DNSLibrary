@@ -13,8 +13,8 @@ final class BookScreenViewModel {
 	enum Action { }
 	
 	// MARK: - Data
-	@Published
-	var action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
+//	@Published
+	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private var cancellables: Set<AnyCancellable> = []
 	private let actionHandler: ((BookScreenAction) -> Void)
 	
