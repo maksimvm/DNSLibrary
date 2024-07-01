@@ -11,19 +11,13 @@ import UIKit
 final class BookScreenUICollectionView: UICollectionView {
 	
 	enum Action {
-		case editBookName(filledText: String)
-		case editAuthor(filledText: String)
-		case editPublicationYear(filledText: String)
+		case editBookName
+		case editAuthor
+		case editPublicationYear
 	}
 	
-	private typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
-	private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
-	
-	private enum Section: Int {
-		case bookName
-		case author
-		case publicationYear
-	}
+	private typealias DataSource = UICollectionViewDiffableDataSource<BookField, Item>
+	private typealias Snapshot = NSDiffableDataSourceSnapshot<BookField, Item>
 	
 	private enum Item: Hashable {
 		case bookName(bookName: String)
@@ -84,13 +78,13 @@ final class BookScreenUICollectionView: UICollectionView {
 			if let cell: BookScreenUICollectionViewCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: BookScreenUICollectionViewCollectionViewCell.reuseIdentifier,
 																										   for: indexPath) as? BookScreenUICollectionViewCollectionViewCell {
 				cell.configure(title: bookName,
-							   cellType: .bookName)
+							   bookField: .bookName)
 				cell.action
 					.receive(on: DispatchQueue.main)
 					.sink { [weak self] action in
 						switch action {
-						case .editBook(let filledText):
-							self?.action.send(.editBookName(filledText: filledText))
+						case .editBook:
+							self?.action.send(.editBookName)
 						}
 					}
 					.store(in: &cancellables)
@@ -100,13 +94,13 @@ final class BookScreenUICollectionView: UICollectionView {
 				if let cell: BookScreenUICollectionViewCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: BookScreenUICollectionViewCollectionViewCell.reuseIdentifier,
 																											   for: indexPath) as? BookScreenUICollectionViewCollectionViewCell {
 					cell.configure(title: author,
-								   cellType: .author)
+								   bookField: .author)
 					cell.action
 						.receive(on: DispatchQueue.main)
 						.sink { [weak self] action in
 							switch action {
-							case .editBook(let filledText):
-								self?.action.send(.editAuthor(filledText: filledText))
+							case .editBook:
+								self?.action.send(.editAuthor)
 							}
 						}
 						.store(in: &cancellables)
@@ -116,13 +110,13 @@ final class BookScreenUICollectionView: UICollectionView {
 			if let cell: BookScreenUICollectionViewCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: BookScreenUICollectionViewCollectionViewCell.reuseIdentifier,
 																										   for: indexPath) as? BookScreenUICollectionViewCollectionViewCell {
 				cell.configure(title: publicationYear,
-							   cellType: .publicationYear)
+							   bookField: .publicationYear)
 				cell.action
 					.receive(on: DispatchQueue.main)
 					.sink { [weak self] action in
 						switch action {
-						case .editBook(let filledText):
-							self?.action.send(.editPublicationYear(filledText: filledText))
+						case .editBook:
+							self?.action.send(.editPublicationYear)
 						}
 					}
 					.store(in: &cancellables)

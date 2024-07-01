@@ -15,7 +15,7 @@
 
 // MARK: - SortBooksScreen
 "sortBooksScreenTitleText" = "Sort books";
-"sortBooksScreenCancelActinText" = "Cancel";
+"sortBooksScreenCancelActionText" = "Cancel";
 "sortBooksScreenAuthorSortActionText" = "By author";
 "sortBooksScreenBookNameSortActionText" = "By book name";
 "sortBooksScreenPublicationYearSortActionText" = "By publication year";
@@ -24,3 +24,11 @@
 "bookScreenBookNameLabelText" = "Book name";
 "bookScreenAuthorLabelText" = "Book author";
 "bookScreenPublicationDateLabelText" = "Book publication year";
+"bookScreenEmptyFieldLabelText" = "This field should not be empty";
+"booksScreenEditBookNameAlertTitleText" = "Enter book name";
+"booksScreenEditAuthorAlertTitleText" = "Enter book author";
+"booksScreenEditPublicationYearAlertTitleText" = "Enter publication year";
+"booksScreenAlertSubmitActionTitleText" = "Ok";
+"booksScreenAlertCancelActionTitleText" = "Cancel";
+"booksScreenSaveButtonTitleText" = "Save";
+"booksScreenDeleteButtonTitleText" = "Delete book";

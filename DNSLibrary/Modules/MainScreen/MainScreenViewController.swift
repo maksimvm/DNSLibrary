@@ -61,7 +61,7 @@ final class MainScreenViewController: UIViewController {
 			.sink { [weak self] action in
 				switch action {
 				case .editBook(let book):
-					self?.coordinator?.editBook(book: book)
+					self?.coordinator?.viewBook(book: book)
 				}
 			}
 			.store(in: &cancellables)
@@ -72,11 +72,11 @@ final class MainScreenViewController: UIViewController {
 		navigationItem.backButtonTitle = ""
 		navigationItem.largeTitleDisplayMode = .automatic
 		navigationController?.navigationBar.prefersLargeTitles = true
-		let addBookUIBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus")?.withTintColor(ThemeManager.currentTheme().generalSymbolColor),
+		let addBookUIBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus")?.withTintColor(ThemeManager.currentTheme().generalBlueColor),
 																	  style: .plain,
 																	  target: self,
 																	  action: #selector(addBook))
-		let sortBooksUIBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down")?.withTintColor(ThemeManager.currentTheme().generalSymbolColor),
+		let sortBooksUIBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down")?.withTintColor(ThemeManager.currentTheme().generalBlueColor),
 																		style: .plain,
 																		target: self,
 																		action: #selector(sortBooks))

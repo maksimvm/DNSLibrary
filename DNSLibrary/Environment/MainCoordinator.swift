@@ -11,6 +11,7 @@ final class MainCoordinator: Coordinator {
 	
 	// MARK: - Data
 	private(set) var navigationController: UINavigationController
+	private lazy var mainScreenAssembly = MainScreenAssembly(coordinator: self)
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -19,27 +20,36 @@ final class MainCoordinator: Coordinator {
 	// MARK: - Actions
 	@MainActor 
 	func start() {
-		let mainScreenAssembly = MainScreenAssembly(coordinator: self)
 		navigationController.pushViewController(mainScreenAssembly.view,
 												animated: false)
 	}
 	
 	func addBook() {
-		let bookScreenAssembly: BookScreenAssembly = BookScreenAssembly { _ in }
+		let bookScreenAssembly: BookScreenAssembly = BookScreenAssembly(coordinator: self) { [weak self] action in
+			switch action {
+			case .reloadData:
+				self?.mainScreenAssembly.view.viewModel.action.send(.reloadData)
+			}
+		}
 		navigationController.pushViewController(bookScreenAssembly.view,
 												animated: true)
 	}
 	
-	func editBook(book: Book) {
-		let bookScreenAssembly: BookScreenAssembly = BookScreenAssembly(book: book) { _ in }
+	func viewBook(book: Book) {
+		let bookScreenAssembly: BookScreenAssembly = BookScreenAssembly(book: book, coordinator: self) { [weak self] action in
+			switch action {
+			case .reloadData:
+				self?.mainScreenAssembly.view.viewModel.action.send(.reloadData)
+			}
+		}
 		navigationController.pushViewController(bookScreenAssembly.view,
 												animated: true)
 	}
 	
 	func sortBooks(
-		sortingOption: SortingOption,
-		sortingType: SortingType,
-		actionHandler: @escaping (SortingOption, SortingType) -> Void
+		sortingOption: BookField,
+		sortingType: BookFieldType,
+		actionHandler: @escaping (BookField, BookFieldType) -> Void
 	) {
 		var bookNameSortActionTitle: String = NSLocalizedString("sortBooksScreenBookNameSortActionText", comment: "")
 		var authorSortActionTitle: String = NSLocalizedString("sortBooksScreenAuthorSortActionText", comment: "")
@@ -49,7 +59,7 @@ final class MainCoordinator: Coordinator {
 			bookNameSortActionTitle.append(sortingType == .ascending ? " ↑ ✓" : " ↓ ✓")
 		case .author:
 			authorSortActionTitle.append(sortingType == .ascending ? " ↑ ✓" : " ↓ ✓")
-		case .publicationDate:
+		case .publicationYear:
 			publicationDateSortActionTitle.append(sortingType == .ascending ? " ↑ ✓" : " ↓ ✓")
 		}
 		let actionSheetController: UIAlertController = UIAlertController(title: NSLocalizedString("sortBooksScreenTitleText", comment: ""),
@@ -62,15 +72,49 @@ final class MainCoordinator: Coordinator {
 			actionHandler(.author, sortingType == .ascending ? .descending : .ascending)
 		}
 		let publicationDateSortAction: UIAlertAction = UIAlertAction(title: publicationDateSortActionTitle, style: .default) { _ in
-			actionHandler(.publicationDate, sortingType == .ascending ? .descending : .ascending)
+			actionHandler(.publicationYear, sortingType == .ascending ? .descending : .ascending)
 		}
-		let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("sortBooksScreenCancelActinText", comment: ""), style: .cancel)
+		let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("sortBooksScreenCancelActionText", comment: ""), style: .cancel)
 		actionSheetController.addAction(bookNameSortAction)
 		actionSheetController.addAction(authorSortAction)
 		actionSheetController.addAction(publicationDateSortAction)
 		actionSheetController.addAction(cancelAction)
 		navigationController.present(actionSheetController,
-									 animated: true, 
-									 completion: nil)
+									 animated: true)
+	}
+	
+	func editBook(
+		bookField: BookField,
+		text: String,
+		actionHandler: @escaping (String) -> Void
+	) {
+		var alertControllerTitleText: String
+		switch bookField {
+		case .bookName:
+			alertControllerTitleText = NSLocalizedString("booksScreenEditBookNameAlertTitleText", comment: "")
+		case .author:
+			alertControllerTitleText = NSLocalizedString("booksScreenEditAuthorAlertTitleText", comment: "")
+		case .publicationYear:
+			alertControllerTitleText = NSLocalizedString("booksScreenEditPublicationYearAlertTitleText", comment: "")
+		}
+		let alertController: UIAlertController = UIAlertController(title: alertControllerTitleText,
+																   message: nil,
+																   preferredStyle: .alert)
+		alertController.addTextField { textField in
+			textField.placeholder = alertControllerTitleText
+			if !text.isEmpty {
+				textField.text = text
+			}
+		}
+		let submitAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("booksScreenAlertSubmitActionTitleText", comment: ""), style: .default) { _ in
+			if let text: String = alertController.textFields?.first?.text {
+				actionHandler(text)
+			}
+		}
+		alertController.addAction(submitAction)
+		let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("booksScreenAlertCancelActionTitleText", comment: ""), style: .cancel)
+		alertController.addAction(cancelAction)
+		navigationController.present(alertController,
+									 animated: true)
 	}
 }

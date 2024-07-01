@@ -11,18 +11,11 @@ import UIKit
 final class BookScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 	
 	enum Action {
-		case editBook(filledText: String)
-	}
-	
-	enum CellType {
-		case bookName
-		case author
-		case publicationYear
+		case editBook
 	}
     
 	// MARK: - Data
 	private(set) var action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
-	private var cellType: CellType = .bookName
 	private lazy var infoLabel: UILabel = {
 		let infoLabel: UILabel = UILabel()
 		infoLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +29,7 @@ final class BookScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 		let titleLabel: UILabel = UILabel()
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 		titleLabel.font = UIFont.systemFont(ofSize: 16)
-		titleLabel.textColor = ThemeManager.currentTheme().generalSymbolColor
+		titleLabel.textColor = ThemeManager.currentTheme().generalBlueColor
 		titleLabel.numberOfLines = 0
 		titleLabel.textAlignment = .left
 		return titleLabel
@@ -83,10 +76,9 @@ final class BookScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 	
 	func configure(
 		title: String,
-		cellType: CellType
+		bookField: BookField
 	) {
-		self.cellType = cellType
-		switch cellType {
+		switch bookField {
 		case .bookName:
 			infoLabel.text = NSLocalizedString("bookScreenBookNameLabelText", comment: "")
 		case .author:
@@ -94,12 +86,16 @@ final class BookScreenUICollectionViewCollectionViewCell: UICollectionViewCell {
 		case .publicationYear:
 			infoLabel.text = NSLocalizedString("bookScreenPublicationDateLabelText", comment: "")
 		}
-		titleLabel.text = title
+		if title.isEmpty {
+			titleLabel.text = NSLocalizedString("bookScreenEmptyFieldLabelText", comment: "")
+		} else {
+			titleLabel.text = title
+		}
 	}
 	
 	// MARK: - Actions
 	@objc
 	private func editField() {
-		action.send(.editBook(filledText: titleLabel.text.orEmpty))
+		action.send(.editBook)
 	}
 }

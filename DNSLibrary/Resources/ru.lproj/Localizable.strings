@@ -15,7 +15,7 @@
 
 // MARK: - SortBooksScreen
 "sortBooksScreenTitleText" = "Сортировать книги";
-"sortBooksScreenCancelActinText" = "Отмена";
+"sortBooksScreenCancelActionText" = "Отмена";
 "sortBooksScreenAuthorSortActionText" = "По автору";
 "sortBooksScreenBookNameSortActionText" = "По названию кники";
 "sortBooksScreenPublicationYearSortActionText" = "По году издания";
@@ -24,3 +24,11 @@
 "bookScreenBookNameLabelText" = "Название книги";
 "bookScreenAuthorLabelText" = "Автор книги";
 "bookScreenPublicationDateLabelText" = "Год публикации кники";
+"bookScreenEmptyFieldLabelText" = "Данное поле необходимо заполнить";
+"booksScreenEditBookNameAlertTitleText" = "Введите название книги";
+"booksScreenEditAuthorAlertTitleText" = "Введите автора книги";
+"booksScreenEditPublicationYearAlertTitleText" = "Введите год издания книги";
+"booksScreenAlertSubmitActionTitleText" = "Ok";
+"booksScreenAlertCancelActionTitleText" = "Отмена";
+"booksScreenSaveButtonTitleText" = "Сохранить";
+"booksScreenDeleteButtonTitleText" = "Удалить книгу";

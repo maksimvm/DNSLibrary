@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum SortingOption: Sendable {
+enum BookField: Int, Sendable {
 	case bookName
 	case author
-	case publicationDate
+	case publicationYear
 }
 
-enum SortingType: Sendable {
+enum BookFieldType: Sendable {
 	case ascending
 	case descending
 }

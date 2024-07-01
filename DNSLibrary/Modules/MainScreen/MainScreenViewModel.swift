@@ -11,14 +11,15 @@ import Foundation
 final class MainScreenViewModel {
 	
 	enum Action { 
-		case sortBooks(sortingOption: SortingOption, sortingType: SortingType)
+		case sortBooks(sortingOption: BookField, sortingType: BookFieldType)
+		case reloadData
 	}
 	
 	// MARK: - Data
 	@Published
 	private(set) var libraryModel: [Book] = [Book]()
-	private(set) var chosenSortingOption: SortingOption = .bookName
-	private(set) var chosenSortingOptionType: SortingType = .ascending
+	private(set) var chosenSortingOption: BookField = .bookName
+	private(set) var chosenSortingOptionType: BookFieldType = .ascending
 	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private var cancellables: Set<AnyCancellable> = []
 	
@@ -29,6 +30,8 @@ final class MainScreenViewModel {
 				switch action {
 				case .sortBooks(let sortingOption, let sortingType):
 					self?.sortBook(sortingOption: sortingOption, sortingType: sortingType)
+				case .reloadData:
+					self?.reloadData()
 				}
 			}
 			.store(in: &cancellables)
@@ -49,8 +52,8 @@ final class MainScreenViewModel {
 	}
 	
 	private func sortBook(
-		sortingOption: SortingOption,
-		sortingType: SortingType
+		sortingOption: BookField,
+		sortingType: BookFieldType
 	) {
 		chosenSortingOption = sortingOption
 		chosenSortingOptionType = sortingType
@@ -68,12 +71,16 @@ final class MainScreenViewModel {
 			} else {
 				libraryModel.sort(by: { $0.author < $1.author })
 			}
-		case .publicationDate:
+		case .publicationYear:
 			if sortingType == .ascending {
 				libraryModel.sort(by: { $0.publicationYear > $1.publicationYear })
 			} else {
 				libraryModel.sort(by: { $0.publicationYear < $1.publicationYear })
 			}
 		}
+	}
+	
+	private func reloadData() {
+		
 	}
 }

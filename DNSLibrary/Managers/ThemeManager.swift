@@ -52,7 +52,11 @@ enum Theme: String {
 		}
 	}
 	
-	var generalSymbolColor: UIColor {
+	var generalBlueColor: UIColor {
 		return .blue
+	}
+	
+	var generalRedColor: UIColor {
+		return .red
 	}
 }

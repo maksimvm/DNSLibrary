@@ -9,9 +9,9 @@ import Foundation
 
 struct Book: Sendable, Hashable {
 	let id: String
-	let bookName: String
-	let author: String
-	let publicationYear: String
+	var bookName: String
+	var author: String
+	var publicationYear: String
 }
 
 extension Book {
