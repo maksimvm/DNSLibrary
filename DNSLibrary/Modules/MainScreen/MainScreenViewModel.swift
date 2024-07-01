@@ -11,7 +11,7 @@ import Foundation
 final class MainScreenViewModel {
 	
 	enum Action { 
-		case sortBooks(sortingOption: BookField, sortingType: BookFieldType)
+		case sortBooks(sortField: BookField, sortOrder: SortOrder)
 		case searchBooks(selectedScopeButtonIndex: Int, searchText: String)
 		case reloadData
 	}
@@ -19,8 +19,8 @@ final class MainScreenViewModel {
 	// MARK: - Data
 	@Published
 	private(set) var library: [Book] = [Book]()
-	private(set) var chosenSortingOption: BookField = .bookName
-	private(set) var chosenSortingOptionType: BookFieldType = .ascending
+	private(set) var chosenSortField: BookField = .bookName
+	private(set) var chosenSortOrder: SortOrder = .ascending
 	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private var cancellables: Set<AnyCancellable> = []
 	private var initialLibrary: [Book] = [Book]()
@@ -30,8 +30,8 @@ final class MainScreenViewModel {
 			.receive(on: DispatchQueue.main)
 			.sink { [weak self] action in
 				switch action {
-				case .sortBooks(let sortingOption, let sortingType):
-					self?.sortBook(sortingOption: sortingOption, sortingType: sortingType)
+				case .sortBooks(let sortField, let sortOrder):
+					self?.sortBook(sortField: sortField, sortOrder: sortOrder)
 				case .reloadData:
 					self?.loadData()
 				case .searchBooks(let selectedScopeButtonIndex, let searchText):
@@ -74,27 +74,27 @@ final class MainScreenViewModel {
 	}
 	
 	private func sortBook(
-		sortingOption: BookField,
-		sortingType: BookFieldType
+		sortField: BookField,
+		sortOrder: SortOrder
 	) {
-		chosenSortingOption = sortingOption
-		chosenSortingOptionType = sortingType
-		switch sortingOption {
+		chosenSortField = sortField
+		chosenSortOrder = sortOrder
+		switch sortField {
 		case .bookName:
-			if sortingType == .ascending {
+			if sortOrder == .ascending {
 				library.sort(by: { $0.bookName > $1.bookName })
 			} else {
 				library.sort(by: { $0.bookName < $1.bookName })
 			}
 			
 		case .author:
-			if sortingType == .ascending {
+			if sortOrder == .ascending {
 				library.sort(by: { $0.author > $1.author })
 			} else {
 				library.sort(by: { $0.author < $1.author })
 			}
 		case .publicationYear:
-			if sortingType == .ascending {
+			if sortOrder == .ascending {
 				library.sort(by: { $0.publicationYear > $1.publicationYear })
 			} else {
 				library.sort(by: { $0.publicationYear < $1.publicationYear })

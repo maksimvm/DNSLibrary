@@ -13,7 +13,7 @@ enum BookField: Int, Sendable {
 	case publicationYear
 }
 
-enum BookFieldType: Sendable {
+enum SortOrder: Sendable {
 	case ascending
 	case descending
 }

@@ -47,32 +47,32 @@ final class MainCoordinator: Coordinator {
 	}
 	
 	func sortBooks(
-		sortingOption: BookField,
-		sortingType: BookFieldType,
-		actionHandler: @escaping (BookField, BookFieldType) -> Void
+		sortField: BookField,
+		sortOrder: SortOrder,
+		actionHandler: @escaping (BookField, SortOrder) -> Void
 	) {
 		var bookNameSortActionTitle: String = NSLocalizedString("sortBooksScreenBookNameSortActionText", comment: "")
 		var authorSortActionTitle: String = NSLocalizedString("sortBooksScreenAuthorSortActionText", comment: "")
 		var publicationDateSortActionTitle: String = NSLocalizedString("sortBooksScreenPublicationYearSortActionText", comment: "")
-		switch sortingOption {
+		switch sortField {
 		case .bookName:
-			bookNameSortActionTitle.append(sortingType == .ascending ? " ↑ ✓" : " ↓ ✓")
+			bookNameSortActionTitle.append(sortOrder == .ascending ? " ↑ ✓" : " ↓ ✓")
 		case .author:
-			authorSortActionTitle.append(sortingType == .ascending ? " ↑ ✓" : " ↓ ✓")
+			authorSortActionTitle.append(sortOrder == .ascending ? " ↑ ✓" : " ↓ ✓")
 		case .publicationYear:
-			publicationDateSortActionTitle.append(sortingType == .ascending ? " ↑ ✓" : " ↓ ✓")
+			publicationDateSortActionTitle.append(sortOrder == .ascending ? " ↑ ✓" : " ↓ ✓")
 		}
 		let actionSheetController: UIAlertController = UIAlertController(title: NSLocalizedString("sortBooksScreenTitleText", comment: ""),
 																		 message: nil,
 																		 preferredStyle: .actionSheet)
 		let bookNameSortAction: UIAlertAction = UIAlertAction(title: bookNameSortActionTitle, style: .default) { _ in
-			actionHandler(.bookName, sortingType == .ascending ? .descending : .ascending)
+			actionHandler(.bookName, sortOrder == .ascending ? .descending : .ascending)
 		}
 		let authorSortAction: UIAlertAction = UIAlertAction(title: authorSortActionTitle, style: .default) { _ in
-			actionHandler(.author, sortingType == .ascending ? .descending : .ascending)
+			actionHandler(.author, sortOrder == .ascending ? .descending : .ascending)
 		}
 		let publicationDateSortAction: UIAlertAction = UIAlertAction(title: publicationDateSortActionTitle, style: .default) { _ in
-			actionHandler(.publicationYear, sortingType == .ascending ? .descending : .ascending)
+			actionHandler(.publicationYear, sortOrder == .ascending ? .descending : .ascending)
 		}
 		let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("sortBooksScreenCancelActionText", comment: ""), style: .cancel)
 		actionSheetController.addAction(bookNameSortAction)

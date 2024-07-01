@@ -106,8 +106,8 @@ final class MainScreenViewController: UIViewController {
 	
 	@objc 
 	private func sortBooks() {
-		coordinator?.sortBooks(sortingOption: viewModel.chosenSortingOption, sortingType: viewModel.chosenSortingOptionType) { [weak self] sortingOption, sortingType  in
-			self?.viewModel.action.send(.sortBooks(sortingOption: sortingOption, sortingType: sortingType))
+		coordinator?.sortBooks(sortField: viewModel.chosenSortField, sortOrder: viewModel.chosenSortOrder) { [weak self] sortField, sortOrder  in
+			self?.viewModel.action.send(.sortBooks(sortField: sortField, sortOrder: sortOrder))
 		}
 	}
 }
