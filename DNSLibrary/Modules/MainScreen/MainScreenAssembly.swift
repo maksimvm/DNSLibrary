@@ -12,6 +12,7 @@ final class MainScreenAssembly {
 	// MARK: - Data
 	private var viewController: MainScreenViewController?
 	private let coordinator: MainCoordinator
+	private let coreDataManager: CoreDataManager
 	
 	@MainActor
 	var view: MainScreenViewController {
@@ -23,14 +24,23 @@ final class MainScreenAssembly {
 		return view
 	}
 	
-	init(coordinator: MainCoordinator) {
+	convenience init(coordinator: MainCoordinator) {
+		self.init(coreDataManager: CoreDataManager.shared,
+				  coordinator: coordinator)
+	}
+	
+	init(
+		coreDataManager: CoreDataManager,
+		coordinator: MainCoordinator
+	) {
+		self.coreDataManager = coreDataManager
 		self.coordinator = coordinator
 	}
 	
 	@MainActor
 	private func configureModule(_ view: MainScreenViewController?) {
 		guard let view else { return }
-		view.viewModel = MainScreenViewModel()
+		view.viewModel = MainScreenViewModel(coreDataManager: coreDataManager)
 		view.coordinator = coordinator
 	}
 }

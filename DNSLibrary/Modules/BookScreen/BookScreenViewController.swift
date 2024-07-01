@@ -117,11 +117,11 @@ final class BookScreenViewController: UIViewController {
 						self.viewModel.action.send(.saveBookName(name: bookName))
 					}
 				case .editAuthor:
-					self.coordinator?.editBook(bookField: .author, text: self.viewModel.book?.bookName ?? "") { author in
+					self.coordinator?.editBook(bookField: .author, text: self.viewModel.book?.author ?? "") { author in
 						self.viewModel.action.send(.saveAuthor(author: author))
 					}
 				case .editPublicationYear:
-					self.coordinator?.editBook(bookField: .publicationYear, text: self.viewModel.book?.bookName ?? "") { publicationYear in
+					self.coordinator?.editBook(bookField: .publicationYear, text: self.viewModel.book?.publicationYear ?? "") { publicationYear in
 						self.viewModel.action.send(.savePublicationYear(publicationYear: publicationYear))
 					}
 				}
@@ -139,10 +139,16 @@ final class BookScreenViewController: UIViewController {
 	@objc
 	private func saveButtonIsPressed() {
 		viewModel.action.send(.saveBook)
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+			self?.coordinator?.popViewController()
+		}
 	}
 	
 	@objc
 	private func deleteButtonIsPressed() {
 		viewModel.action.send(.deleteBook)
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+			self?.coordinator?.popViewController()
+		}
 	}
 }

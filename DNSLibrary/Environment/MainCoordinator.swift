@@ -18,30 +18,20 @@ final class MainCoordinator: Coordinator {
 	}
 	
 	// MARK: - Actions
-	@MainActor 
+	@MainActor
 	func start() {
 		navigationController.pushViewController(mainScreenAssembly.view,
 												animated: false)
 	}
 	
 	func addBook() {
-		let bookScreenAssembly: BookScreenAssembly = BookScreenAssembly(coordinator: self) { [weak self] action in
-			switch action {
-			case .reloadData:
-				self?.mainScreenAssembly.view.viewModel.action.send(.reloadData)
-			}
-		}
+		let bookScreenAssembly: BookScreenAssembly = BookScreenAssembly(coordinator: self)
 		navigationController.pushViewController(bookScreenAssembly.view,
 												animated: true)
 	}
 	
 	func viewBook(book: Book) {
-		let bookScreenAssembly: BookScreenAssembly = BookScreenAssembly(book: book, coordinator: self) { [weak self] action in
-			switch action {
-			case .reloadData:
-				self?.mainScreenAssembly.view.viewModel.action.send(.reloadData)
-			}
-		}
+		let bookScreenAssembly: BookScreenAssembly = BookScreenAssembly(book: book, coordinator: self)
 		navigationController.pushViewController(bookScreenAssembly.view,
 												animated: true)
 	}
@@ -116,5 +106,9 @@ final class MainCoordinator: Coordinator {
 		alertController.addAction(cancelAction)
 		navigationController.present(alertController,
 									 animated: true)
+	}
+	
+	func popViewController() {
+		navigationController.popViewController(animated: true)
 	}
 }

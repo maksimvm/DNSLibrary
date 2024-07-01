@@ -13,64 +13,47 @@ final class MainScreenViewModel {
 	enum Action { 
 		case sortBooks(sortField: BookField, sortOrder: SortOrder)
 		case searchBooks(selectedScopeButtonIndex: Int, searchText: String)
-		case reloadData
 	}
 	
 	// MARK: - Data
 	@Published
-	private(set) var library: [Book] = [Book]()
+	private(set) var library: [Book] = []
 	private(set) var chosenSortField: BookField = .bookName
 	private(set) var chosenSortOrder: SortOrder = .ascending
 	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private var cancellables: Set<AnyCancellable> = []
-	private var initialLibrary: [Book] = [Book]()
+	private var initialLibrary: [Book] = []
+	private let coreDataManager: CoreDataManager
 	
-	init() {
+	init(coreDataManager: CoreDataManager) {
+		self.coreDataManager = coreDataManager
+		NotificationCenter.default.addObserver(self,
+											   selector: #selector(loadData),
+											   name: .NSManagedObjectContextDidSave,
+											   object: nil)
 		action
 			.receive(on: DispatchQueue.main)
 			.sink { [weak self] action in
 				switch action {
 				case .sortBooks(let sortField, let sortOrder):
 					self?.sortBook(sortField: sortField, sortOrder: sortOrder)
-				case .reloadData:
-					self?.loadData()
 				case .searchBooks(let selectedScopeButtonIndex, let searchText):
 					self?.searchBooks(selectedScopeButtonIndex: selectedScopeButtonIndex, searchText: searchText)
 				}
 			}
 			.store(in: &cancellables)
-		library = [
-			Book(bookName: "Test2",
-				 author: "Test",
-				 publicationYear: "1995"),
-			Book(bookName: "1996",
-				 author: "1996",
-				 publicationYear: "1996"),
-			Book(bookName: "1997",
-				 author: "1997",
-				 publicationYear: "1997"),
-			Book(bookName: "1998",
-				 author: "1998",
-				 publicationYear: "1998")
-		]
-		initialLibrary = [
-			Book(bookName: "Test2",
-				 author: "Test",
-				 publicationYear: "1995"),
-			Book(bookName: "1996",
-				 author: "1996",
-				 publicationYear: "1996"),
-			Book(bookName: "1997",
-				 author: "1997",
-				 publicationYear: "1997"),
-			Book(bookName: "1998",
-				 author: "1998",
-				 publicationYear: "1998")
-		]
+		loadData()
 	}
 	
+	deinit {
+		NotificationCenter.default.removeObserver(self)
+	}
+	
+	@objc
 	private func loadData() {
-		
+		let books: [Book] = coreDataManager.loadBooks()
+		library = books
+		initialLibrary = books
 	}
 	
 	private func sortBook(

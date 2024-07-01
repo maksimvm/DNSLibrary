@@ -22,7 +22,7 @@ final class MainScreenUICollectionView: UICollectionView {
 		case placeholer
 	}
 	
-	private enum Item: Hashable {
+	private enum Item: Hashable, Sendable {
 		case book(book: Book)
 		case placeholder
 	}

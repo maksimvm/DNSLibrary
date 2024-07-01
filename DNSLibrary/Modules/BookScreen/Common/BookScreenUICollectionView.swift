@@ -135,7 +135,7 @@ final class BookScreenUICollectionView: UICollectionView {
 	
 	private func createLayout() -> NSCollectionLayoutSection {
 		let itemSize: NSCollectionLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-																	  heightDimension: .estimated(1))
+																	  heightDimension: .estimated(50))
 		let item: NSCollectionLayoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
 		let groupSize: NSCollectionLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
 																	   heightDimension: .estimated(1))

@@ -20,6 +20,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	) -> Bool {
 		configureAppTheme()
 		configureAppWindow()
+		configureCoreData()
 		
 		return true
 	}
@@ -37,9 +38,15 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	private func configureAppWindow() {
 		let navigationController: UINavigationController = UINavigationController()
 		coordinator = MainCoordinator(navigationController: navigationController)
-		coordinator?.start()
 		window = UIWindow()
 		window?.rootViewController = navigationController
 		window?.makeKeyAndVisible()
+	}
+	
+	/// Function that creates calls to CoreData manager and awaits storage loading.
+	private func configureCoreData() {
+		CoreDataManager.shared.load { [weak self] in
+			self?.coordinator?.start()
+		}
 	}
 }

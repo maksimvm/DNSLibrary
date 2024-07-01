@@ -26,13 +26,13 @@ final class BookScreenViewModel {
 	@Published
 	private(set) var isDeleteButtonEnabled: Bool
 	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
+	private let coreDataManager: CoreDataManager
 	private var cancellables: Set<AnyCancellable> = []
-	private let actionHandler: ((BookScreenAction) -> Void)
 	private var initialBook: Book?
 	
 	init(
 		book: Book?,
-		actionHandler: @escaping ((BookScreenAction) -> Void)
+		coreDataManager: CoreDataManager
 	) {
 		if let book {
 			self.book = book
@@ -41,7 +41,7 @@ final class BookScreenViewModel {
 		} else {
 			isDeleteButtonEnabled = false
 		}
-		self.actionHandler = actionHandler
+		self.coreDataManager = coreDataManager
 		action
 			.receive(on: DispatchQueue.main)
 			.sink { [weak self] action in
@@ -53,9 +53,13 @@ final class BookScreenViewModel {
 				case .savePublicationYear(let publicationYear):
 					self?.savePublicationYear(publicationYear: publicationYear)
 				case .saveBook:
-					self?.saveBook()
+					self?.coreDataManager.save()
 				case .deleteBook:
-					self?.deleteBook()
+					if let book: Book = self?.initialBook {
+						self?.coreDataManager.deleteBook(book: book)
+					} else if let book: Book = self?.book {
+						self?.coreDataManager.deleteBook(book: book)
+					}
 				}
 			}
 			.store(in: &cancellables)
@@ -65,11 +69,9 @@ final class BookScreenViewModel {
 		if !name.isEmpty {
 			if book != nil {
 				book?.bookName = name
+				self.book = book
 			} else {
-				let newBook: Book = Book(bookName: name,
-								   author: "",
-								   publicationYear: "")
-				book = newBook
+				book = coreDataManager.createBook(bookName: name)
 			}
 		}
 		compareInitialBookWithEditedOne()
@@ -79,11 +81,9 @@ final class BookScreenViewModel {
 		if !author.isEmpty {
 			if book != nil {
 				book?.author = author
+				self.book = book
 			} else {
-				let newBook: Book = Book(bookName: "",
-										 author: author,
-										 publicationYear: "")
-				book = newBook
+				book = coreDataManager.createBook(author: author)
 			}
 		}
 		compareInitialBookWithEditedOne()
@@ -93,11 +93,9 @@ final class BookScreenViewModel {
 		if !publicationYear.isEmpty {
 			if book != nil {
 				book?.publicationYear = publicationYear
+				self.book = book
 			} else {
-				let newBook: Book = Book(bookName: "",
-										 author: "",
-										 publicationYear: publicationYear)
-				book = newBook
+				book = coreDataManager.createBook(publicationYear: publicationYear)
 			}
 		}
 		compareInitialBookWithEditedOne()
@@ -111,13 +109,5 @@ final class BookScreenViewModel {
 				isSaveButtonEnabled = !book.bookName.isEmpty && !book.author.isEmpty && !book.publicationYear.isEmpty
 			}
 		}
-	}
-	
-	private func saveBook() {
-		actionHandler(.reloadData)
-	}
-	
-	private func deleteBook() {
-		actionHandler(.reloadData)
 	}
 }

@@ -23,9 +23,8 @@
 		813DE2BD2C2EE7F60030EDE2 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2BC2C2EE7F60030EDE2 /* UserDefaultsManager.swift */; };
 		813DE2C22C2EF2D20030EDE2 /* MainScreenUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2C12C2EF2D20030EDE2 /* MainScreenUICollectionView.swift */; };
 		813DE2C42C2EF59E0030EDE2 /* MainScreenUICollectionViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2C32C2EF59E0030EDE2 /* MainScreenUICollectionViewCollectionViewCell.swift */; };
-		813DE2C72C2EFE920030EDE2 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2C62C2EFE920030EDE2 /* Book.swift */; };
-		813DE2CA2C2F05DF0030EDE2 /* UICollectionViewCell + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2C92C2F05DF0030EDE2 /* UICollectionViewCell + Extension.swift */; };
-		813DE2CC2C2F061E0030EDE2 /* UICollectionView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2CB2C2F061E0030EDE2 /* UICollectionView + Extenstion.swift */; };
+		813DE2CA2C2F05DF0030EDE2 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2C92C2F05DF0030EDE2 /* UICollectionViewCell+Extension.swift */; };
+		813DE2CC2C2F061E0030EDE2 /* UICollectionView+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2CB2C2F061E0030EDE2 /* UICollectionView+Extenstion.swift */; };
 		813DE2D02C2F0BD90030EDE2 /* MainScreenPlaceholderUICollectionViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2CF2C2F0BD90030EDE2 /* MainScreenPlaceholderUICollectionViewCollectionViewCell.swift */; };
 		813DE2D32C306CB90030EDE2 /* DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2D22C306CB90030EDE2 /* DebugPrint.swift */; };
 		813DE2DB2C306E550030EDE2 /* BookScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2D62C306E550030EDE2 /* BookScreenViewController.swift */; };
@@ -34,7 +33,11 @@
 		813DE2E02C3131DA0030EDE2 /* BookSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2DF2C3131DA0030EDE2 /* BookSorting.swift */; };
 		813DE2E32C3153100030EDE2 /* BookScreenUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2E22C3153100030EDE2 /* BookScreenUICollectionView.swift */; };
 		813DE2E52C31538E0030EDE2 /* BookScreenUICollectionViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2E42C31538E0030EDE2 /* BookScreenUICollectionViewCollectionViewCell.swift */; };
-		813DE2E72C31609A0030EDE2 /* Optional + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2E62C31609A0030EDE2 /* Optional + Extension.swift */; };
+		813DE2E72C31609A0030EDE2 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2E62C31609A0030EDE2 /* Optional+Extension.swift */; };
+		813DE2EB2C330E120030EDE2 /* Library.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2E92C330E120030EDE2 /* Library.xcdatamodeld */; };
+		813DE2EE2C330F660030EDE2 /* Book+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2EC2C330F660030EDE2 /* Book+CoreDataClass.swift */; };
+		813DE2EF2C330F660030EDE2 /* Book+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2ED2C330F660030EDE2 /* Book+CoreDataProperties.swift */; };
+		813DE2F12C3311C20030EDE2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DE2F02C3311C20030EDE2 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,9 +60,8 @@
 		813DE2BC2C2EE7F60030EDE2 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		813DE2C12C2EF2D20030EDE2 /* MainScreenUICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenUICollectionView.swift; sourceTree = "<group>"; };
 		813DE2C32C2EF59E0030EDE2 /* MainScreenUICollectionViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenUICollectionViewCollectionViewCell.swift; sourceTree = "<group>"; };
-		813DE2C62C2EFE920030EDE2 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		813DE2C92C2F05DF0030EDE2 /* UICollectionViewCell + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell + Extension.swift"; sourceTree = "<group>"; };
-		813DE2CB2C2F061E0030EDE2 /* UICollectionView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extenstion.swift"; sourceTree = "<group>"; };
+		813DE2C92C2F05DF0030EDE2 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		813DE2CB2C2F061E0030EDE2 /* UICollectionView+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extenstion.swift"; sourceTree = "<group>"; };
 		813DE2CF2C2F0BD90030EDE2 /* MainScreenPlaceholderUICollectionViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenPlaceholderUICollectionViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		813DE2D12C2FC4140030EDE2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		813DE2D22C306CB90030EDE2 /* DebugPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugPrint.swift; sourceTree = "<group>"; };
@@ -69,7 +71,11 @@
 		813DE2DF2C3131DA0030EDE2 /* BookSorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSorting.swift; sourceTree = "<group>"; };
 		813DE2E22C3153100030EDE2 /* BookScreenUICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookScreenUICollectionView.swift; sourceTree = "<group>"; };
 		813DE2E42C31538E0030EDE2 /* BookScreenUICollectionViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookScreenUICollectionViewCollectionViewCell.swift; sourceTree = "<group>"; };
-		813DE2E62C31609A0030EDE2 /* Optional + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional + Extension.swift"; sourceTree = "<group>"; };
+		813DE2E62C31609A0030EDE2 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
+		813DE2EA2C330E120030EDE2 /* Library.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Library.xcdatamodel; sourceTree = "<group>"; };
+		813DE2EC2C330F660030EDE2 /* Book+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataClass.swift"; sourceTree = "<group>"; };
+		813DE2ED2C330F660030EDE2 /* Book+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		813DE2F02C3311C20030EDE2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,8 +184,10 @@
 		813DE2C52C2EFE7E0030EDE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				813DE2C62C2EFE920030EDE2 /* Book.swift */,
 				813DE2DF2C3131DA0030EDE2 /* BookSorting.swift */,
+				813DE2E92C330E120030EDE2 /* Library.xcdatamodeld */,
+				813DE2EC2C330F660030EDE2 /* Book+CoreDataClass.swift */,
+				813DE2ED2C330F660030EDE2 /* Book+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,9 +195,9 @@
 		813DE2C82C2F05CE0030EDE2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				813DE2CB2C2F061E0030EDE2 /* UICollectionView + Extenstion.swift */,
-				813DE2C92C2F05DF0030EDE2 /* UICollectionViewCell + Extension.swift */,
-				813DE2E62C31609A0030EDE2 /* Optional + Extension.swift */,
+				813DE2CB2C2F061E0030EDE2 /* UICollectionView+Extenstion.swift */,
+				813DE2C92C2F05DF0030EDE2 /* UICollectionViewCell+Extension.swift */,
+				813DE2E62C31609A0030EDE2 /* Optional+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -197,8 +205,9 @@
 		813DE2CD2C2F07730030EDE2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				813DE2BC2C2EE7F60030EDE2 /* UserDefaultsManager.swift */,
+				813DE2F02C3311C20030EDE2 /* CoreDataManager.swift */,
 				813DE2B62C2EC9C40030EDE2 /* ThemeManager.swift */,
+				813DE2BC2C2EE7F60030EDE2 /* UserDefaultsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -330,23 +339,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				813DE2C42C2EF59E0030EDE2 /* MainScreenUICollectionViewCollectionViewCell.swift in Sources */,
-				813DE2CC2C2F061E0030EDE2 /* UICollectionView + Extenstion.swift in Sources */,
+				813DE2CC2C2F061E0030EDE2 /* UICollectionView+Extenstion.swift in Sources */,
 				813DE2A72C2EBD460030EDE2 /* Coordinator.swift in Sources */,
 				813DE2B12C2EBE1C0030EDE2 /* MainScreenViewController.swift in Sources */,
 				813DE2E52C31538E0030EDE2 /* BookScreenUICollectionViewCollectionViewCell.swift in Sources */,
 				813DE2B22C2EBE1C0030EDE2 /* MainScreenAssembly.swift in Sources */,
+				813DE2EB2C330E120030EDE2 /* Library.xcdatamodeld in Sources */,
 				813DE2C22C2EF2D20030EDE2 /* MainScreenUICollectionView.swift in Sources */,
 				813DE2B32C2EBE1C0030EDE2 /* MainScreenViewModel.swift in Sources */,
 				813DE2A92C2EBD880030EDE2 /* MainCoordinator.swift in Sources */,
-				813DE2C72C2EFE920030EDE2 /* Book.swift in Sources */,
 				813DE2E02C3131DA0030EDE2 /* BookSorting.swift in Sources */,
+				813DE2EE2C330F660030EDE2 /* Book+CoreDataClass.swift in Sources */,
+				813DE2EF2C330F660030EDE2 /* Book+CoreDataProperties.swift in Sources */,
 				813DE2DB2C306E550030EDE2 /* BookScreenViewController.swift in Sources */,
 				813DE2DC2C306E550030EDE2 /* BookScreenAssembly.swift in Sources */,
 				813DE2DD2C306E550030EDE2 /* BookScreenViewModel.swift in Sources */,
 				813DE2792C2E9B4A0030EDE2 /* AppDelegate.swift in Sources */,
-				813DE2CA2C2F05DF0030EDE2 /* UICollectionViewCell + Extension.swift in Sources */,
+				813DE2CA2C2F05DF0030EDE2 /* UICollectionViewCell+Extension.swift in Sources */,
+				813DE2F12C3311C20030EDE2 /* CoreDataManager.swift in Sources */,
 				813DE2BD2C2EE7F60030EDE2 /* UserDefaultsManager.swift in Sources */,
-				813DE2E72C31609A0030EDE2 /* Optional + Extension.swift in Sources */,
+				813DE2E72C31609A0030EDE2 /* Optional+Extension.swift in Sources */,
 				813DE2D02C2F0BD90030EDE2 /* MainScreenPlaceholderUICollectionViewCollectionViewCell.swift in Sources */,
 				813DE2B72C2EC9C40030EDE2 /* ThemeManager.swift in Sources */,
 				813DE2E32C3153100030EDE2 /* BookScreenUICollectionView.swift in Sources */,
@@ -589,6 +601,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		813DE2E92C330E120030EDE2 /* Library.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				813DE2EA2C330E120030EDE2 /* Library.xcdatamodel */,
+			);
+			currentVersion = 813DE2EA2C330E120030EDE2 /* Library.xcdatamodel */;
+			name = Library.xcdatamodeld;
+			path = /Users/maksimgromov/Desktop/DNSLibrary/DNSLibrary/Models/Library.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 813DE26D2C2E9B4A0030EDE2 /* Project object */;
 }

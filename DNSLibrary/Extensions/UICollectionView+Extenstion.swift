@@ -1,5 +1,5 @@
 //
-//  UICollectionView + Extenstion.swift
+//  UICollectionView+Extenstion.swift
 //  DNSLibrary
 //
 //  Created by Максим Громов on 28.06.2024.
