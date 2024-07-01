@@ -12,6 +12,7 @@
 "mainScreenAuthorLabelText" = "Author";
 "mainScreenPublicationDateLabelText" = "Publication year";
 "mainScreenNoBooksLabelText" = "You don't have any books yet";
+"mainScreenSearchBarPlaceholderText" = "Start searching";
 
 // MARK: - SortBooksScreen
 "sortBooksScreenTitleText" = "Sort books";

@@ -12,16 +12,18 @@ final class MainScreenViewModel {
 	
 	enum Action { 
 		case sortBooks(sortingOption: BookField, sortingType: BookFieldType)
+		case searchBooks(selectedScopeButtonIndex: Int, searchText: String)
 		case reloadData
 	}
 	
 	// MARK: - Data
 	@Published
-	private(set) var libraryModel: [Book] = [Book]()
+	private(set) var library: [Book] = [Book]()
 	private(set) var chosenSortingOption: BookField = .bookName
 	private(set) var chosenSortingOptionType: BookFieldType = .ascending
 	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private var cancellables: Set<AnyCancellable> = []
+	private var initialLibrary: [Book] = [Book]()
 	
 	init() {
 		action
@@ -31,11 +33,27 @@ final class MainScreenViewModel {
 				case .sortBooks(let sortingOption, let sortingType):
 					self?.sortBook(sortingOption: sortingOption, sortingType: sortingType)
 				case .reloadData:
-					self?.reloadData()
+					self?.loadData()
+				case .searchBooks(let selectedScopeButtonIndex, let searchText):
+					self?.searchBooks(selectedScopeButtonIndex: selectedScopeButtonIndex, searchText: searchText)
 				}
 			}
 			.store(in: &cancellables)
-		libraryModel = [
+		library = [
+			Book(bookName: "Test2",
+				 author: "Test",
+				 publicationYear: "1995"),
+			Book(bookName: "1996",
+				 author: "1996",
+				 publicationYear: "1996"),
+			Book(bookName: "1997",
+				 author: "1997",
+				 publicationYear: "1997"),
+			Book(bookName: "1998",
+				 author: "1998",
+				 publicationYear: "1998")
+		]
+		initialLibrary = [
 			Book(bookName: "Test2",
 				 author: "Test",
 				 publicationYear: "1995"),
@@ -51,6 +69,10 @@ final class MainScreenViewModel {
 		]
 	}
 	
+	private func loadData() {
+		
+	}
+	
 	private func sortBook(
 		sortingOption: BookField,
 		sortingType: BookFieldType
@@ -60,27 +82,40 @@ final class MainScreenViewModel {
 		switch sortingOption {
 		case .bookName:
 			if sortingType == .ascending {
-				libraryModel.sort(by: { $0.bookName > $1.bookName })
+				library.sort(by: { $0.bookName > $1.bookName })
 			} else {
-				libraryModel.sort(by: { $0.bookName < $1.bookName })
+				library.sort(by: { $0.bookName < $1.bookName })
 			}
 			
 		case .author:
 			if sortingType == .ascending {
-				libraryModel.sort(by: { $0.author > $1.author })
+				library.sort(by: { $0.author > $1.author })
 			} else {
-				libraryModel.sort(by: { $0.author < $1.author })
+				library.sort(by: { $0.author < $1.author })
 			}
 		case .publicationYear:
 			if sortingType == .ascending {
-				libraryModel.sort(by: { $0.publicationYear > $1.publicationYear })
+				library.sort(by: { $0.publicationYear > $1.publicationYear })
 			} else {
-				libraryModel.sort(by: { $0.publicationYear < $1.publicationYear })
+				library.sort(by: { $0.publicationYear < $1.publicationYear })
 			}
 		}
 	}
 	
-	private func reloadData() {
-		
+	private func searchBooks(
+		selectedScopeButtonIndex: Int,
+		searchText: String
+	) {
+		if searchText.isEmpty {
+			library = initialLibrary
+		} else {
+			if selectedScopeButtonIndex == 0 {
+				library = initialLibrary.filter { $0.bookName.contains(searchText) }
+			} else if selectedScopeButtonIndex == 1 {
+				library = initialLibrary.filter { $0.author.contains(searchText) }
+			} else {
+				library = initialLibrary.filter { $0.publicationYear.contains(searchText) }
+			}
+		}
 	}
 }

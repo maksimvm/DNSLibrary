@@ -14,6 +14,17 @@ final class MainScreenViewController: UIViewController {
 	var viewModel: MainScreenViewModel!
 	weak var coordinator: MainCoordinator?
 	private var cancellables: Set<AnyCancellable> = []
+	private lazy var searchController: UISearchController = {
+		let searchController: UISearchController = UISearchController()
+		searchController.searchBar.delegate = self
+		searchController.searchBar.placeholder = NSLocalizedString("mainScreenSearchBarPlaceholderText", comment: "")
+		searchController.searchBar.scopeButtonTitles = [
+			NSLocalizedString("mainScreenBookNameLabelText", comment: ""),
+			NSLocalizedString("mainScreenAuthorLabelText", comment: ""),
+			NSLocalizedString("mainScreenPublicationDateLabelText", comment: "")
+		]
+		return searchController
+	}()
 	private let collectionView: MainScreenUICollectionView = MainScreenUICollectionView(frame: .zero)
 	
 	override init(
@@ -39,6 +50,7 @@ final class MainScreenViewController: UIViewController {
 	
 	private func configureView() {
 		view.backgroundColor = ThemeManager.currentTheme().generalColor
+		navigationItem.searchController = searchController
 		view.addSubview(collectionView)
 		NSLayoutConstraint.activate([
 			collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
@@ -49,7 +61,7 @@ final class MainScreenViewController: UIViewController {
 	}
 	
 	private func binding() {
-		viewModel.$libraryModel
+		viewModel.$library
 			.receive(on: DispatchQueue.main)
 			.sink { [weak self] model in
 				self?.collectionView.configure(model)
@@ -97,5 +109,41 @@ final class MainScreenViewController: UIViewController {
 		coordinator?.sortBooks(sortingOption: viewModel.chosenSortingOption, sortingType: viewModel.chosenSortingOptionType) { [weak self] sortingOption, sortingType  in
 			self?.viewModel.action.send(.sortBooks(sortingOption: sortingOption, sortingType: sortingType))
 		}
+	}
+}
+
+// MARK: - UISearchBarDelegate
+extension MainScreenViewController: UISearchBarDelegate {
+	func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+		searchBar.setShowsScope(true,
+								animated: true)
+		return true
+	}
+	
+	func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+		searchBar.setShowsScope(false,
+								animated: true)
+	}
+	
+	func searchBar(
+		_ searchBar: UISearchBar,
+		textDidChange searchText: String
+	) {
+		viewModel.action.send(.searchBooks(selectedScopeButtonIndex: searchBar.selectedScopeButtonIndex, searchText: searchText))
+	}
+	
+	func searchBar(
+		_ searchBar: UISearchBar,
+		selectedScopeButtonIndexDidChange selectedScope: Int
+	) {
+		viewModel.action.send(.searchBooks(selectedScopeButtonIndex: selectedScope, searchText: searchBar.searchTextField.text ?? ""))
+	}
+	
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		viewModel.action.send(.searchBooks(selectedScopeButtonIndex: searchBar.selectedScopeButtonIndex, searchText: searchBar.searchTextField.text ?? ""))
+	}
+	
+	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		viewModel.action.send(.searchBooks(selectedScopeButtonIndex: searchBar.selectedScopeButtonIndex, searchText: ""))
 	}
 }

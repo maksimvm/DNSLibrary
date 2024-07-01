@@ -12,6 +12,7 @@
 "mainScreenAuthorLabelText" = "Автор";
 "mainScreenPublicationDateLabelText" = "Год публикации";
 "mainScreenNoBooksLabelText" = "У вас пока нет ни одной книги";
+"mainScreenSearchBarPlaceholderText" = "Начать поиск";
 
 // MARK: - SortBooksScreen
 "sortBooksScreenTitleText" = "Сортировать книги";
