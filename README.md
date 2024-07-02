@@ -6,7 +6,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/maksimvm/DNSLibrary)
 ![GitHub contributors](https://img.shields.io/github/contributors/maksimvm/DNSLibrary)
 
-<img align="right" width="50%" src="./images/swift.jpg">
+<img align="right" width="60%" src="./images/swift.jpg">
 
 # Library iOS App
 
@@ -28,5 +28,5 @@ No 3rd party libraries should be used, but only UIKit, Swift, CoreData and Diffa
 
 ## A picture is worth a thousand words
 
-<img src="./images/launch-screen.png">
-<img src="./images/main-screen.png">
+<img align="right" width="50%" src="./images/launch-screen.png">
+<img align="right" width="50%" src="./images/main-screen.png">
