@@ -20,8 +20,8 @@ No 3rd party libraries should be used, but only UIKit, Swift, CoreData and Diffa
 
 ## Solution notes
 
-- :trident: MMVM + Coordinator architecture (model->view->view model)
-- :book: Swift with minor improvments / extension (well, more or less :blush:)
+- :trident: MVVM + Coordinator architecture (model->view->view model)
+- :book: Swift with minor improvments / extensions (well, more or less :blush:)
 - :cd: CoreData
 - :card_file_box: UICollectionViews with DiffableDataSources and Compositional layouts
 
