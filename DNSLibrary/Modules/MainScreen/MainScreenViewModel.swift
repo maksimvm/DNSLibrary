@@ -54,7 +54,6 @@ final class MainScreenViewModel {
 	@objc
 	private func loadBooks() {
 		library = coreDataManager.loadBooks()
-		print("books loaded")
 	}
 	
 	private func sortBook(
