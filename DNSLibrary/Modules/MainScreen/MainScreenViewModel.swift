@@ -22,13 +22,13 @@ final class MainScreenViewModel {
 	private(set) var chosenSortOrder: SortOrder = .ascending
 	let action: PassthroughSubject<Action, Never> = PassthroughSubject<Action, Never>()
 	private var cancellables: Set<AnyCancellable> = []
-	private var initialLibrary: [Book] = []
 	private let coreDataManager: CoreDataManager
+	private let debouncer: Debouncer = Debouncer()
 	
 	init(coreDataManager: CoreDataManager) {
 		self.coreDataManager = coreDataManager
 		NotificationCenter.default.addObserver(self,
-											   selector: #selector(loadData),
+											   selector: #selector(loadBooks),
 											   name: .NSManagedObjectContextDidSave,
 											   object: nil)
 		action
@@ -42,7 +42,7 @@ final class MainScreenViewModel {
 				}
 			}
 			.store(in: &cancellables)
-		loadData()
+		loadBooks()
 	}
 	
 	deinit {
@@ -50,10 +50,8 @@ final class MainScreenViewModel {
 	}
 	
 	@objc
-	private func loadData() {
-		let books: [Book] = coreDataManager.loadBooks()
-		library = books
-		initialLibrary = books
+	private func loadBooks() {
+		library = coreDataManager.loadBooks()
 	}
 	
 	private func sortBook(
@@ -62,27 +60,8 @@ final class MainScreenViewModel {
 	) {
 		chosenSortField = sortField
 		chosenSortOrder = sortOrder
-		switch sortField {
-		case .bookName:
-			if sortOrder == .ascending {
-				library.sort(by: { $0.bookName > $1.bookName })
-			} else {
-				library.sort(by: { $0.bookName < $1.bookName })
-			}
-			
-		case .author:
-			if sortOrder == .ascending {
-				library.sort(by: { $0.author > $1.author })
-			} else {
-				library.sort(by: { $0.author < $1.author })
-			}
-		case .publicationYear:
-			if sortOrder == .ascending {
-				library.sort(by: { $0.publicationYear > $1.publicationYear })
-			} else {
-				library.sort(by: { $0.publicationYear < $1.publicationYear })
-			}
-		}
+		library = coreDataManager.loadBooks(sortField: sortField,
+											sortOrder: sortOrder)
 	}
 	
 	private func searchBooks(
@@ -90,14 +69,17 @@ final class MainScreenViewModel {
 		searchText: String
 	) {
 		if searchText.isEmpty {
-			library = initialLibrary
+			loadBooks()
 		} else {
-			if selectedScopeButtonIndex == 0 {
-				library = initialLibrary.filter { $0.bookName.contains(searchText) }
-			} else if selectedScopeButtonIndex == 1 {
-				library = initialLibrary.filter { $0.author.contains(searchText) }
-			} else {
-				library = initialLibrary.filter { $0.publicationYear.contains(searchText) }
+			debouncer.debounce(for: 0.5) { [weak self] in
+				guard let self else { return }
+				if selectedScopeButtonIndex == 0 {
+					self.library = self.coreDataManager.loadBooks().filter { $0.bookName.contains(searchText) }
+				} else if selectedScopeButtonIndex == 1 {
+					self.library = self.coreDataManager.loadBooks().filter { $0.author.contains(searchText) }
+				} else {
+					self.library = self.coreDataManager.loadBooks().filter { $0.publicationYear.contains(searchText) }
+				}
 			}
 		}
 	}

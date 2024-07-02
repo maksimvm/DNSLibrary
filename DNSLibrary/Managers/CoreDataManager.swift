@@ -45,10 +45,23 @@ final class CoreDataManager: Sendable {
 		return book
 	}
 	
-	func loadBooks() -> [Book] {
+	func loadBooks(
+		sortField: BookField = .author,
+		sortOrder: SortOrder = .ascending
+	) -> [Book] {
 		let request: NSFetchRequest<Book> = Book.fetchRequest()
-		let sortDescriptor: NSSortDescriptor = NSSortDescriptor(keyPath: \Book.bookName,
-																ascending: true)
+		var sortDescriptor: NSSortDescriptor
+		switch sortField {
+		case .bookName:
+			sortDescriptor = NSSortDescriptor(keyPath: \Book.bookName,
+											  ascending: sortOrder == .ascending)
+		case .author:
+			sortDescriptor = NSSortDescriptor(keyPath: \Book.author,
+											  ascending: sortOrder == .ascending)
+		case .publicationYear:
+			sortDescriptor = NSSortDescriptor(keyPath: \Book.publicationYear,
+											  ascending: sortOrder == .ascending)
+		}
 		request.sortDescriptors = [sortDescriptor]
 		return (try? context.fetch(request)) ?? []
 	}
