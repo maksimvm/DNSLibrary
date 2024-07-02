@@ -83,7 +83,7 @@ final class MainScreenViewController: UIViewController {
 			.receive(on: DispatchQueue.main)
 			.sink { [weak self] model in
 				guard let self else { return }
-				if !model.isEmpty && self.launchImageView.alpha == 1 {
+				if self.launchImageView.alpha == 1 {
 					UIView.animate(withDuration: 0.5) {
 						self.launchImageView.alpha = 0
 					} completion: { _ in
