@@ -14,6 +14,13 @@ final class MainScreenViewController: UIViewController {
 	var viewModel: MainScreenViewModel!
 	weak var coordinator: MainCoordinator?
 	private var cancellables: Set<AnyCancellable> = []
+	private lazy var launchImageView: UIImageView = {
+		let launchImageView: UIImageView = UIImageView()
+		launchImageView.contentMode = .center
+		launchImageView.image = UIImage(named: "LaunchScreenImage")
+		launchImageView.translatesAutoresizingMaskIntoConstraints = false
+		return launchImageView
+	}()
 	private lazy var searchController: UISearchController = {
 		let searchController: UISearchController = UISearchController()
 		searchController.searchBar.delegate = self
@@ -35,7 +42,9 @@ final class MainScreenViewController: UIViewController {
 				   bundle: nibBundleOrNil)
 	}
 	
-	required init?(coder: NSCoder) { fatalError() }
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -58,14 +67,31 @@ final class MainScreenViewController: UIViewController {
 			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
 			collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
 		])
+		if let navigationController: UINavigationController = coordinator?.navigationController {
+			navigationController.view.addSubview(launchImageView)
+			NSLayoutConstraint.activate([
+				launchImageView.topAnchor.constraint(equalTo: navigationController.view.topAnchor, constant: 0),
+				launchImageView.leadingAnchor.constraint(equalTo: navigationController.view.leadingAnchor, constant: 0),
+				launchImageView.bottomAnchor.constraint(equalTo: navigationController.view.bottomAnchor, constant: 0),
+				launchImageView.trailingAnchor.constraint(equalTo: navigationController.view.trailingAnchor, constant: 0)
+			])
+		}
 	}
 	
 	private func binding() {
 		viewModel.$library
 			.receive(on: DispatchQueue.main)
 			.sink { [weak self] model in
-				self?.collectionView.configure(model)
-				self?.navigationItem.rightBarButtonItems?.last?.isEnabled = model.count > 1
+				guard let self else { return }
+				if !model.isEmpty && self.launchImageView.alpha == 1 {
+					UIView.animate(withDuration: 0.5) {
+						self.launchImageView.alpha = 0
+					} completion: { _ in
+						self.launchImageView.removeFromSuperview()
+					}
+				}
+				self.collectionView.configure(model)
+				self.navigationItem.rightBarButtonItems?.last?.isEnabled = model.count > 1
 			}
 			.store(in: &cancellables)
 		collectionView.action

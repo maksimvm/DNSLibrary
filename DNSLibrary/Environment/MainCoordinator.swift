@@ -11,7 +11,6 @@ final class MainCoordinator: Coordinator {
 	
 	// MARK: - Data
 	private(set) var navigationController: UINavigationController
-	private lazy var mainScreenAssembly = MainScreenAssembly(coordinator: self)
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -20,6 +19,7 @@ final class MainCoordinator: Coordinator {
 	// MARK: - Actions
 	@MainActor
 	func start() {
+		let mainScreenAssembly: MainScreenAssembly = MainScreenAssembly(coordinator: self)
 		navigationController.pushViewController(mainScreenAssembly.view,
 												animated: false)
 	}

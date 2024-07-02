@@ -27,6 +27,9 @@ final class MainScreenViewModel {
 	
 	init(coreDataManager: CoreDataManager) {
 		self.coreDataManager = coreDataManager
+		coreDataManager.load { [weak self] in
+			self?.loadBooks()
+		}
 		NotificationCenter.default.addObserver(self,
 											   selector: #selector(loadBooks),
 											   name: .NSManagedObjectContextDidSave,
@@ -42,7 +45,6 @@ final class MainScreenViewModel {
 				}
 			}
 			.store(in: &cancellables)
-		loadBooks()
 	}
 	
 	deinit {

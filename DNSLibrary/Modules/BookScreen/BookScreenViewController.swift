@@ -52,7 +52,9 @@ final class BookScreenViewController: UIViewController {
 				   bundle: nibBundleOrNil)
     }
     
-	required init?(coder: NSCoder) { fatalError() }
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
