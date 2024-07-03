@@ -1,10 +1,7 @@
 ![Repository Top Language](https://img.shields.io/github/languages/top/maksimvm/DNSLibrary)
-![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/quality/g/maksimvm/DNSLibrary/dev)
 ![Github Repository Size](https://img.shields.io/github/repo-size/maksimvm/DNSLibrary)
 ![Github Open Issues](https://img.shields.io/github/issues/maksimvm/DNSLibrary)
-![Lines of code](https://img.shields.io/tokei/lines/github/maksimvm/DNSLibrary)
 ![GitHub last commit](https://img.shields.io/github/last-commit/maksimvm/DNSLibrary)
-![GitHub contributors](https://img.shields.io/github/contributors/maksimvm/DNSLibrary)
 
 <img align="right" width="60%" src="./images/swift.jpg">
 
